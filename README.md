@@ -11,7 +11,8 @@ dated to the late-autumn colour window.
 - **Ten day-by-day cards**, colour-coded by the rail line that gets you there — Tokyo Metro,
   Toei, JR and Osaka Metro official line colours
 - **Every stop costed** for two adults, with a note wherever the baby goes free
-- **A drawn illustration per day** — ten hand-authored SVGs, no photographs, no external assets
+- **A photograph and a drawing per day** — a freely-licensed Wikimedia Commons photo layered over
+  a hand-authored SVG, so the drawing shows through wherever external images are blocked
 - **Two map views** — a diagram drawn from real coordinates that works offline, and a real
   OpenStreetMap layer with every stop clickable
 - **37 restaurants** across both cities with price bands, and a note on which ones take a pram
