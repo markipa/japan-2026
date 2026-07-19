@@ -101,6 +101,18 @@
 
   /* ---------- illustrations ---------- */
   .illo{display:block;width:100%;height:auto;background:var(--il-sky);border-bottom:1px solid var(--line)}
+  /* A photo layers over the drawing. Until it loads — or if it never does — the drawing
+     is what you see, so the card is never empty or broken. */
+  .illoHost{position:relative}
+  .photoWrap{position:absolute;inset:0;opacity:0;transition:opacity .45s ease}
+  .photoWrap.on{opacity:1}
+  @media (prefers-reduced-motion:reduce){ .photoWrap{transition:none} }
+  .photo{width:100%;height:100%;object-fit:cover;display:block;border-bottom:1px solid var(--line)}
+  .photoCredit{position:absolute;right:0;bottom:1px;
+    font-family:var(--f-data);font-size:9.5px;letter-spacing:.04em;
+    padding:3px 7px;background:rgba(8,11,18,.62);color:#EDEFF4;text-decoration:none;
+    border-top-left-radius:5px;backdrop-filter:blur(3px)}
+  .photoCredit:hover{background:rgba(8,11,18,.85);color:#fff;text-decoration:underline}
   .illoCap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
     padding:11px 20px 0}
   .illoCap .cap{font-family:var(--f-data);font-size:10.5px;letter-spacing:.1em;
@@ -253,6 +265,11 @@
 
   footer{margin-top:72px;padding-top:24px;border-top:1px solid var(--line);
     font-size:13px;color:var(--tx-3);max-width:70ch}
+  .credits{display:flex;flex-wrap:wrap;gap:5px 14px;margin:14px 0 18px}
+  .credit{font-family:var(--f-data);font-size:10.5px;letter-spacing:.02em;color:var(--tx-3)}
+  .credit b{color:var(--tx-2);font-weight:600}
+  .credit a{color:var(--tx-2);text-decoration:none;border-bottom:1px solid var(--line)}
+  .credit a:hover{color:var(--accent);border-bottom-color:var(--accent)}
   @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
   @media (max-width:640px){
     .rail{padding-left:32px}.rail:before{left:7px}.dot{left:-31px;width:15px;height:15px;border-width:3px}
@@ -565,11 +582,12 @@
   </section>
 
   <footer>
-    <b style="color:var(--tx-2)">On the illustrations.</b> Every image on this page is a vector drawing
-    made for it, not a photograph. Published pages block external image hosts, and embedding
-    photographers' work into a page you might share isn't mine to do. If you want real photos, add your
-    own image files alongside this one and they can be wired in.
-    <br><br>
+    <b style="color:var(--tx-2)">On the images.</b> Each day carries a photograph over a vector
+    drawing made for this page. The photographs are freely licensed, come from Wikimedia Commons,
+    and are credited individually in the corner of each one — click a credit for the original. Where
+    this page is embedded somewhere that blocks external images, the photographs simply don't load
+    and the drawings underneath are what you see. Both are real; neither is a placeholder.
+    <div id="photoCredits" class="credits"></div>
     Costed for two adults and one infant under 2, nine nights, late November into December 2026. Prices
     are estimates in yen from published 2025 rates and will drift over a year — planning figures, not
     quotes. Child thresholds vary: most sights here are free under 6, Osaka Castle is free under 15,
@@ -1162,7 +1180,7 @@
         <span class="chev">▸</span>
       </summary>
       <div class="dbody" style="padding-left:0;padding-right:0">
-        ${ILLO[d.illo]}
+        <div class="illoHost" data-day="${d.n}">${ILLO[d.illo]}</div>
         <div class="illoCap">
           <span class="lineTag" style="background:${ln.c}">${ln.n}</span>
           <span class="cityTag">${CITY[d.city]}</span>
@@ -1179,7 +1197,8 @@
   }).join("");
 
   // ---------- transfer section banner ----------
-  document.getElementById("transferIllo").innerHTML = ILLO.dotonbori +
+  document.getElementById("transferIllo").innerHTML =
+    '<div class="illoHost" id="transferIlloHost">' + ILLO.dotonbori + '</div>' +
     `<div style="padding:9px 16px;font-family:var(--f-data);font-size:10.5px;letter-spacing:.09em;
       text-transform:uppercase;color:var(--tx-3);background:var(--surface)">
       Dotonbori after dark · what you arrive to on day 6</div>`;
@@ -1473,6 +1492,96 @@
   renderMaps();
   if (narrowQuery.addEventListener) narrowQuery.addEventListener("change", renderMaps);
   else if (narrowQuery.addListener) narrowQuery.addListener(renderMaps);
+
+  // ---------- photographs ----------
+  // Freely-licensed photographs from Wikimedia Commons, layered over the drawn
+  // illustrations. Each one was opened and looked at before being included: three
+  // earlier picks were discarded because the file name did not match the subject
+  // (a painting of a siege rather than the castle, deer on a road, and a photo of
+  // parked bicycles captioned as Dotonbori). Licence and author come from the
+  // Commons API rather than assumption, and every credit is displayed.
+  // Loading is progressive: where a request is blocked the illustration stays.
+  const PHOTOS = {
+    1:{u:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Tokyo_Metropolitan_Government_Building_No.1_%26_No._2_%282016-04-15_by_Prota_%40Pixabay_1342657%29.jpg/1280px-Tokyo_Metropolitan_Government_Building_No.1_%26_No._2_%282016-04-15_by_Prota_%40Pixabay_1342657%29.jpg",
+        by:"Prota", lic:"CC0",
+        licUrl:"http://creativecommons.org/publicdomain/zero/1.0/deed.en", page:"https://commons.wikimedia.org/wiki/File:Tokyo_Metropolitan_Government_Building_No.1_%26_No._2_(2016-04-15_by_Prota_@Pixabay_1342657).jpg"},
+    2:{u:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Shibuya_Scramble_crossing.jpg/1280px-Shibuya_Scramble_crossing.jpg",
+        by:"Syced", lic:"CC0",
+        licUrl:"http://creativecommons.org/publicdomain/zero/1.0/deed.en", page:"https://commons.wikimedia.org/wiki/File:Shibuya_Scramble_crossing.jpg"},
+    3:{u:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Asakusa_Sensoji_Kaminarimon_2012.JPG/1280px-Asakusa_Sensoji_Kaminarimon_2012.JPG",
+        by:"Kakidai", lic:"CC BY-SA 3.0",
+        licUrl:"https://creativecommons.org/licenses/by-sa/3.0", page:"https://commons.wikimedia.org/wiki/File:Asakusa_Sensoji_Kaminarimon_2012.JPG"},
+    4:{u:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Tsukiji_Outer_Market_-02.jpg/1280px-Tsukiji_Outer_Market_-02.jpg",
+        by:"Aimaimyi", lic:"CC BY-SA 3.0",
+        licUrl:"https://creativecommons.org/licenses/by-sa/3.0", page:"https://commons.wikimedia.org/wiki/File:Tsukiji_Outer_Market_-02.jpg"},
+    5:{u:"https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Rainbow_Bridge_by_night_seen_from_Odaiba_side.jpg/1280px-Rainbow_Bridge_by_night_seen_from_Odaiba_side.jpg",
+        by:"Syced", lic:"CC0",
+        licUrl:"http://creativecommons.org/publicdomain/zero/1.0/deed.en", page:"https://commons.wikimedia.org/wiki/File:Rainbow_Bridge_by_night_seen_from_Odaiba_side.jpg"},
+    6:{u:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/View_of_Mt_Fuji_from_Shinkansen_-_March_2025.jpg/1280px-View_of_Mt_Fuji_from_Shinkansen_-_March_2025.jpg",
+        by:"Kuroshiononeko", lic:"CC0",
+        licUrl:"http://creativecommons.org/publicdomain/zero/1.0/deed.en", page:"https://commons.wikimedia.org/wiki/File:View_of_Mt_Fuji_from_Shinkansen_-_March_2025.jpg"},
+    7:{u:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/20181110_Fushimi_Inari_Torii_12.jpg/1280px-20181110_Fushimi_Inari_Torii_12.jpg",
+        by:"Balon Greyjoy", lic:"CC0",
+        licUrl:"http://creativecommons.org/publicdomain/zero/1.0/deed.en", page:"https://commons.wikimedia.org/wiki/File:20181110_Fushimi_Inari_Torii_12.jpg"},
+    8:{u:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Todaiji_Daibutsuden.jpg/1280px-Todaiji_Daibutsuden.jpg",
+        by:"Dalangalma", lic:"CC BY 2.0",
+        licUrl:"https://creativecommons.org/licenses/by/2.0", page:"https://commons.wikimedia.org/wiki/File:Todaiji_Daibutsuden.jpg"},
+    9:{u:"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Osaka_Castle_02bs3200.jpg/1280px-Osaka_Castle_02bs3200.jpg",
+        by:"663highland", lic:"CC BY 2.5",
+        licUrl:"https://creativecommons.org/licenses/by/2.5", page:"https://commons.wikimedia.org/wiki/File:Osaka_Castle_02bs3200.jpg"},
+    10:{u:"https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Kansai_Airport_terminal_1_%2Cfrom_the_top_of_observation_hall_%22sky_view%22_%2816041786233%29.jpg/1280px-Kansai_Airport_terminal_1_%2Cfrom_the_top_of_observation_hall_%22sky_view%22_%2816041786233%29.jpg",
+        by:"lasta29", lic:"CC BY 2.0",
+        licUrl:"https://creativecommons.org/licenses/by/2.0", page:"https://commons.wikimedia.org/wiki/File:Kansai_Airport_terminal_1_,from_the_top_of_observation_hall_%22sky_view%22_(16041786233).jpg"},
+    99:{u:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Dotonbori%2C_Osaka%2C_at_night%2C_November_2016.jpg/1280px-Dotonbori%2C_Osaka%2C_at_night%2C_November_2016.jpg",
+        by:"Martin Falbisoner", lic:"CC BY-SA 4.0",
+        licUrl:"https://creativecommons.org/licenses/by-sa/4.0", page:"https://commons.wikimedia.org/wiki/File:Dotonbori,_Osaka,_at_night,_November_2016.jpg"}
+  };
+
+  // Layer a photo over an illustration. The <img> sits on top of the SVG; if it
+  // fails to load it removes itself and the drawing shows through unchanged.
+  function attachPhoto(host, key, caption){
+    const p = PHOTOS[key];
+    if (!p || !host) return;
+    const wrap = document.createElement("div");
+    wrap.className = "photoWrap";
+    const img = document.createElement("img");
+    img.className = "photo";
+    img.loading = "lazy";
+    img.decoding = "async";
+    img.referrerPolicy = "no-referrer";
+    img.alt = caption || "";
+    img.addEventListener("load", ()=>{ wrap.classList.add("on"); });
+    img.addEventListener("error", ()=>{ wrap.remove(); });
+    img.src = p.u;
+    const cred = document.createElement("a");
+    cred.className = "photoCredit";
+    cred.href = p.page;
+    cred.target = "_blank";
+    cred.rel = "noopener";
+    cred.textContent = p.by + " · " + p.lic;
+    wrap.appendChild(img);
+    wrap.appendChild(cred);
+    host.appendChild(wrap);
+  }
+
+  const creditsBox = document.getElementById("photoCredits");
+  if (creditsBox){
+    creditsBox.innerHTML = Object.keys(PHOTOS).map(k=>{
+      const p = PHOTOS[k];
+      const label = k === "99" ? "Transfer" : "Day " + k;
+      return '<span class="credit"><b>' + label + '</b> ' +
+        '<a href="' + p.page + '" target="_blank" rel="noopener">' + p.by + '</a> · ' +
+        (p.licUrl ? '<a href="' + p.licUrl + '" target="_blank" rel="noopener">' + p.lic + '</a>'
+                  : p.lic) + '</span>';
+    }).join("");
+  }
+
+  days.forEach(d=>{
+    const card = document.querySelector('.day[data-loc] .illoHost[data-day="'+d.n+'"]');
+    attachPhoto(card, String(d.n), d.cap);
+  });
+  attachPhoto(document.getElementById("transferIlloHost"), "99",
+    "Dotonbori at night, Osaka");
 
   // ---------- the real map ----------
   // Progressive enhancement. Leaflet and OpenStreetMap tiles come from a CDN, which works on
