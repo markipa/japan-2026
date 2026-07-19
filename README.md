@@ -12,6 +12,8 @@ dated to the late-autumn colour window.
   Toei, JR and Osaka Metro official line colours
 - **Every stop costed** for two adults, with a note wherever the baby goes free
 - **A drawn illustration per day** — ten hand-authored SVGs, no photographs, no external assets
+- **Two map views** — a diagram drawn from real coordinates that works offline, and a real
+  OpenStreetMap layer with every stop clickable
 - **37 restaurants** across both cities with price bands, and a note on which ones take a pram
 - **Hotels in three tiers**, priced for a room of three (Japanese hotels enforce occupancy)
 - **A live budget** that recalculates when you switch tier
@@ -36,8 +38,14 @@ node build.js
 Edit `japan-10-day.html`, re-run the build, commit both. Keeping one source file means the
 artifact and the published site can't drift apart.
 
-No dependencies, no build toolchain, no package manager — the page is one file with inline CSS,
-inline JavaScript and inline SVG. Open `index.html` in a browser and it works offline.
+No build toolchain and no package manager — the page is one file with inline CSS, inline
+JavaScript and inline SVG. Open `index.html` in a browser and everything works offline.
+
+The one exception is the **Real map** toggle, which lazily fetches Leaflet from a CDN and tiles
+from OpenStreetMap. It is progressive enhancement: nothing loads until you click it, subresource
+integrity hashes are pinned so a substituted script cannot execute, and if the request is blocked
+— as it is wherever the page is embedded under a strict content security policy — the toggle
+falls back to the drawn diagram and says so. The rest of the page never touches the network.
 
 ## A note on visibility
 
