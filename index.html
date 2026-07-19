@@ -1,0 +1,1137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tokyo & Osaka — 10 Day Itinerary</title>
+<meta name="description" content="An illustrated ten-day Tokyo and Osaka itinerary for two adults and an infant, costed in yen across three budget tiers.">
+
+<!-- Unlisted by design: reachable by link, not through search. -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="googlebot" content="noindex, nofollow">
+
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F3F4F0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E1220" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='14' font-size='14'>🗼</text></svg>">
+<style>
+  /* Reset the artifact host normally supplies. */
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0}
+  img,svg{max-width:100%}
+
+  /* Theme switch — the artifact host provides one; standalone needs its own. */
+  #themeToggle{position:fixed;right:14px;bottom:14px;z-index:80;
+    width:42px;height:42px;border-radius:50%;cursor:pointer;
+    border:1px solid var(--line);background:var(--surface);color:var(--tx-2);
+    font-family:var(--f-data);font-size:15px;line-height:1;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 2px 10px rgba(0,0,0,.16)}
+  #themeToggle:hover{color:var(--tx);border-color:var(--accent-ink)}
+  #themeToggle:focus-visible{outline:2px solid var(--accent-ink);outline-offset:2px}
+  @media print{#themeToggle{display:none}}
+</style>
+</head>
+<body>
+<style>
+  :root{
+    --line:#D9DBD3;
+    --bg:#F3F4F0; --surface:#FFFFFF; --surface-2:#EAECE6;
+    --tx:#171C27; --tx-2:#5A6272; --tx-3:#858C9A;
+    --accent:#C46A00; --accent-ink:#F39700; --accent-soft:#FDF0DC;
+    --good:#0F8A5F; --warn:#B4741A; --baby:#1F7A8C;
+    --il-sky:#DDE5E9; --il-far:#AEC0C8; --il-mid:#718B97; --il-near:#3C5260; --il-ink:#1D2A33; --il-dark:#0B0F18;
+    --r:10px;
+    --f-disp:"Helvetica Neue",Helvetica,"Segoe UI",Arial,sans-serif;
+    --f-body:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    --f-data:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#0E1220; --surface:#161B2C; --surface-2:#1E2436; --line:#2B3247;
+      --tx:#E4E7EF; --tx-2:#A2AABC; --tx-3:#727B90;
+      --accent:#F39700; --accent-ink:#F39700; --accent-soft:#2A2113;
+      --good:#3FCC95; --warn:#E0A53F; --baby:#56B8CC;
+      --il-sky:#141B2B; --il-far:#25314A; --il-mid:#3A4A69; --il-near:#5B6E92; --il-ink:#070A12; --il-dark:#0B0F18;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0E1220; --surface:#161B2C; --surface-2:#1E2436; --line:#2B3247;
+    --tx:#E4E7EF; --tx-2:#A2AABC; --tx-3:#727B90;
+    --accent:#F39700; --accent-ink:#F39700; --accent-soft:#2A2113;
+    --good:#3FCC95; --warn:#E0A53F; --baby:#56B8CC;
+    --il-sky:#141B2B; --il-far:#25314A; --il-mid:#3A4A69; --il-near:#5B6E92; --il-ink:#070A12; --il-dark:#0B0F18;
+  }
+  :root[data-theme="light"]{
+    --bg:#F3F4F0; --surface:#FFFFFF; --surface-2:#EAECE6; --line:#D9DBD3;
+    --tx:#171C27; --tx-2:#5A6272; --tx-3:#858C9A;
+    --accent:#C46A00; --accent-ink:#F39700; --accent-soft:#FDF0DC;
+    --good:#0F8A5F; --warn:#B4741A; --baby:#1F7A8C;
+    --il-sky:#DDE5E9; --il-far:#AEC0C8; --il-mid:#718B97; --il-near:#3C5260; --il-ink:#1D2A33; --il-dark:#0B0F18;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--tx);font-family:var(--f-body);
+    font-size:16.5px;line-height:1.62;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px 96px}
+  a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:2px}
+  a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--accent-ink);outline-offset:2px;border-radius:3px}
+  h1,h2,h3,.disp{font-family:var(--f-disp);font-weight:800;letter-spacing:-.02em;text-wrap:balance}
+  .eyebrow{font-family:var(--f-data);font-size:11px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--tx-3)}
+
+  /* ---------- masthead ---------- */
+  header.top{padding:76px 0 40px;border-bottom:1px solid var(--line)}
+  .kanji{font-size:13px;letter-spacing:.5em;color:var(--accent);font-family:var(--f-disp);font-weight:700}
+  h1{font-size:clamp(42px,8.4vw,84px);line-height:.92;margin:14px 0 0}
+  h1 em{font-style:normal;color:var(--accent)}
+  .sub{max-width:60ch;color:var(--tx-2);margin:20px 0 0}
+  .facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+  .fact{font-family:var(--f-data);font-size:12px;padding:6px 11px;border:1px solid var(--line);
+    border-radius:99px;color:var(--tx-2);background:var(--surface)}
+  .fact b{color:var(--tx);font-weight:600}
+
+  /* ---------- sticky control bar ---------- */
+  .bar{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 88%,transparent);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
+    display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:11px 0}
+  .seg{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--surface)}
+  .seg button{font-family:var(--f-data);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;
+    padding:8px 13px;border:0;background:transparent;color:var(--tx-2);cursor:pointer}
+  .seg button[aria-pressed="true"]{background:var(--accent-ink);color:#0E1220;font-weight:700}
+  .total{margin-left:auto;font-family:var(--f-data);font-size:13px;color:var(--tx-2)}
+  .total b{font-size:19px;color:var(--tx);font-weight:700;letter-spacing:-.01em}
+
+  section{padding-top:64px}
+  h2{font-size:clamp(26px,4vw,38px);margin:0 0 6px}
+  .lede{color:var(--tx-2);max-width:62ch;margin:0 0 26px}
+
+  /* ---------- metro line + day cards ---------- */
+  .rail{position:relative;padding-left:56px}
+  .rail:before{content:"";position:absolute;left:19px;top:14px;bottom:60px;width:3px;
+    background:var(--line);border-radius:2px}
+  .day{position:relative;margin-bottom:14px;background:var(--surface);border:1px solid var(--line);
+    border-radius:var(--r);overflow:hidden}
+  .day.hide{display:none}
+  .dot{position:absolute;left:-45px;top:19px;width:19px;height:19px;border-radius:50%;
+    background:var(--bg);border:4px solid var(--dotc,#888);z-index:2}
+  .dhead{display:flex;gap:14px;align-items:baseline;width:100%;text-align:left;padding:17px 20px;
+    cursor:pointer;color:inherit;font:inherit;list-style:none}
+  .dhead::-webkit-details-marker{display:none}
+  .dhead:hover{background:var(--surface-2)}
+  .dnum{font-family:var(--f-data);font-size:11px;letter-spacing:.14em;color:var(--tx-3);
+    min-width:44px;padding-top:5px}
+  .dtitle{font-family:var(--f-disp);font-weight:800;font-size:20px;letter-spacing:-.015em;flex:1;line-height:1.25}
+  .dtitle span{display:block;font-family:var(--f-body);font-weight:400;font-size:14px;
+    color:var(--tx-2);letter-spacing:0;margin-top:3px}
+  .dcost{font-family:var(--f-data);font-size:13px;color:var(--tx-2);white-space:nowrap}
+  .chev{color:var(--tx-3);font-size:13px;transition:transform .18s}
+  .day[open] .chev{transform:rotate(90deg)}
+  .dbody{padding:0 20px 20px;border-top:1px solid var(--line)}
+  .lineTag{display:inline-block;font-family:var(--f-data);font-size:10.5px;letter-spacing:.1em;
+    text-transform:uppercase;padding:4px 9px;border-radius:4px;color:#0E1220;font-weight:700}
+  .cityTag{display:inline-block;font-family:var(--f-data);font-size:10px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--tx-3);border:1px solid var(--line);
+    padding:3px 8px;border-radius:99px}
+
+  /* ---------- illustrations ---------- */
+  .illo{display:block;width:100%;height:auto;background:var(--il-sky);border-bottom:1px solid var(--line)}
+  .illoCap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
+    padding:11px 20px 0}
+  .illoCap .cap{font-family:var(--f-data);font-size:10.5px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--tx-3)}
+
+  .stop{display:grid;grid-template-columns:70px 1fr auto;gap:6px 16px;padding:14px 0;
+    border-bottom:1px dashed var(--line);align-items:start}
+  .stop:last-child{border-bottom:0}
+  .t{font-family:var(--f-data);font-size:12px;color:var(--tx-3);padding-top:3px}
+  .sname{font-family:var(--f-disp);font-weight:700;font-size:16px;letter-spacing:-.01em}
+  .sdesc{color:var(--tx-2);font-size:15px;margin-top:2px}
+  .links{display:flex;gap:12px;flex-wrap:wrap;margin-top:7px}
+  .links a{font-family:var(--f-data);font-size:11.5px;letter-spacing:.04em;text-decoration:none;
+    border-bottom:1px solid color-mix(in srgb,var(--accent) 40%,transparent);padding-bottom:1px}
+  .links a:hover{border-bottom-color:var(--accent)}
+  .price{font-family:var(--f-data);font-size:13px;color:var(--tx);white-space:nowrap;padding-top:3px;text-align:right}
+  .price.free{color:var(--good)}
+  .tip{margin-top:16px;padding:12px 15px;background:var(--accent-soft);border-radius:8px;
+    font-size:14.5px;color:var(--tx)}
+  .tip b{font-family:var(--f-data);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--accent);display:block;margin-bottom:3px}
+  .tip.baby{background:transparent;border:1px dashed var(--baby);margin-top:9px}
+  .tip.baby b{color:var(--baby)}
+  .kidflag{font-family:var(--f-data);font-size:10px;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--tx-3);margin-top:2px}
+  .kidflag i{font-style:normal;color:var(--baby);font-weight:700}
+
+  /* ---------- food ---------- */
+  .fcat{margin-bottom:26px}
+  .fcat h3{font-size:15px;margin:0 0 2px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .fcat h3 span{font-family:var(--f-data);font-size:10.5px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--tx-3);font-weight:400}
+  .fcat > p{margin:0 0 12px;color:var(--tx-2);font-size:14.5px;max-width:62ch}
+  .eats{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:10px}
+  .eat{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+    padding:14px 16px;display:flex;flex-direction:column;gap:5px}
+  .eat.star{border-color:var(--accent-ink)}
+  .eatTop{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+  .eat .sname{font-size:15px;line-height:1.3}
+  .band{font-family:var(--f-data);font-size:12px;color:var(--tx);white-space:nowrap}
+  .eat .sdesc{font-size:14px}
+  .where{font-family:var(--f-data);font-size:11px;letter-spacing:.06em;color:var(--tx-3);
+    text-transform:uppercase}
+  .flag{font-family:var(--f-data);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--accent);font-weight:700}
+
+  /* ---------- weather ---------- */
+  .wx{border:1px solid var(--line);border-radius:var(--r);background:var(--surface);overflow:hidden}
+  .wxrow{display:grid;grid-template-columns:46px 1fr 64px 128px 1.15fr;gap:14px;align-items:center;
+    padding:9px 18px;border-bottom:1px solid var(--line)}
+  .wxrow:last-child{border-bottom:0}
+  .wxrow.head{background:var(--surface-2);padding-top:8px;padding-bottom:8px}
+  .wxrow.head div{font-family:var(--f-data);font-size:10.5px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--tx-3)}
+  .wxrow.peak{background:var(--accent-soft)}
+  .mo{font-family:var(--f-data);font-size:12.5px;font-weight:600;letter-spacing:.04em}
+  .track{position:relative;height:20px;border-radius:4px;background:var(--surface-2)}
+  .tband{position:absolute;top:3px;height:14px;border-radius:3px}
+  .tlab{font-family:var(--f-data);font-size:11px;color:var(--tx);
+    font-variant-numeric:tabular-nums;white-space:nowrap}
+  .rain{display:flex;align-items:center;gap:8px}
+  .rbar{height:7px;border-radius:2px;background:#4A8FD4;flex:none}
+  .wxnote{font-size:13.5px;color:var(--tx-2)}
+  .packing{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:16px}
+
+  /* ---------- hotels ---------- */
+  .hotels{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+  .htier{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;
+    display:flex;flex-direction:column;gap:14px}
+  .htier.on{border-color:var(--accent-ink);box-shadow:0 0 0 1px var(--accent-ink)}
+  .htier h3{margin:0;font-size:19px}
+  .hrate{font-family:var(--f-data);font-size:22px;font-weight:600;letter-spacing:-.02em}
+  .hrate small{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--tx-3);font-weight:400;margin-top:2px}
+  .hotel{border-top:1px solid var(--line);padding-top:12px}
+  .hotel .sname{font-size:15px}
+  .hmeta{font-family:var(--f-data);font-size:11.5px;color:var(--tx-3);margin-top:2px}
+
+  /* ---------- tables ---------- */
+  .scroll{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+  table{border-collapse:collapse;width:100%;min-width:560px;font-size:14.5px}
+  th,td{padding:11px 16px;text-align:left;border-bottom:1px solid var(--line)}
+  th{font-family:var(--f-data);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--tx-3);font-weight:500;background:var(--surface-2)}
+  td.n{font-family:var(--f-data);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+  tr:last-child td{border-bottom:0}
+  tr.sum td{font-weight:700;background:var(--surface-2);font-family:var(--f-data)}
+
+  .notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+  .note{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent-ink);
+    border-radius:var(--r);padding:16px 18px}
+  .note h3{font-size:15px;margin:0 0 6px}
+  .note p{margin:0;font-size:14.5px;color:var(--tx-2)}
+
+  footer{margin-top:72px;padding-top:24px;border-top:1px solid var(--line);
+    font-size:13px;color:var(--tx-3);max-width:70ch}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+  @media (max-width:640px){
+    .rail{padding-left:32px}.rail:before{left:7px}.dot{left:-31px;width:15px;height:15px;border-width:3px}
+    .stop{grid-template-columns:1fr;gap:2px}.t{padding-top:0}.price{padding-top:4px;text-align:left}
+    header.top{padding-top:44px}
+    .dhead{padding:14px 16px;gap:10px}.dnum{min-width:38px}.dtitle{font-size:17px}
+    .dbody{padding:0 16px 16px}
+    .wxrow{grid-template-columns:44px 1fr 58px;gap:10px;row-gap:4px;padding:11px 14px}
+    .wxrow .rain{grid-column:2/4}
+    .wxrow .wxnote{grid-column:1/4;font-size:13px}
+    .wxrow.head{grid-template-columns:44px 1fr 58px}
+    .wxrow.head div:nth-child(4),.wxrow.head div:nth-child(5){display:none}
+  }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="kanji">東京 · 大阪 2026</div>
+    <h1>Tokyo, Osaka,<br>and <em>ten days</em>.</h1>
+    <p class="sub">Two adults and a baby, nine nights, late November into December 2026 — the tail of
+      the autumn colour and the start of the illuminations. Five days in Tokyo, one bullet train, four
+      days working out of Osaka with Kyoto and Nara in reach. Every stop costed in yen for a household
+      of three, and every day drawn.</p>
+    <div class="facts">
+      <span class="fact"><b>2</b> adults + <b>1</b> infant</span>
+      <span class="fact"><b>5</b> nights Tokyo · <b>4</b> Osaka</span>
+      <span class="fact">Window <b>21 Nov – 5 Dec 2026</b></span>
+      <span class="fact">Fly <b>into HND, out of KIX</b></span>
+      <span class="fact"><b>¥155</b> ≈ $1</span>
+    </div>
+  </header>
+
+  <div class="bar">
+    <span class="eyebrow">Tier</span>
+    <div class="seg" role="group" aria-label="Budget tier">
+      <button data-tier="budget" aria-pressed="false">Budget</button>
+      <button data-tier="mid" aria-pressed="true">Mid</button>
+      <button data-tier="luxe" aria-pressed="false">Luxe</button>
+    </div>
+    <span class="eyebrow">City</span>
+    <div class="seg" role="group" aria-label="Filter by city">
+      <button data-city="all" aria-pressed="true">All</button>
+      <button data-city="tokyo" aria-pressed="false">Tokyo</button>
+      <button data-city="kansai" aria-pressed="false">Kansai</button>
+    </div>
+    <div class="total">Trip total, all three <b id="grand">¥—</b> <span id="grandUsd"></span></div>
+  </div>
+
+  <section id="days">
+    <span class="eyebrow">The route</span>
+    <h2>Day by day</h2>
+    <p class="lede">Tap a day to open it. Times are guides, not a schedule. Prices are the total for
+      two adults — the baby is free at every single stop in this itinerary. Illustrations are drawn,
+      not photographed; see the note at the foot of the page.</p>
+    <div class="rail" id="rail"></div>
+  </section>
+
+  <section id="transfer">
+    <span class="eyebrow">Tokyo → Osaka</span>
+    <h2>The bullet train, with a baby</h2>
+    <p class="lede">The one piece of this trip that needs booking properly rather than turning up.
+      Two and a half hours, and genuinely the easiest travel day you'll have.</p>
+    <div id="transferIllo" style="border:1px solid var(--line);border-radius:var(--r);
+      overflow:hidden;margin-bottom:14px"></div>
+    <div class="notes">
+      <div class="note"><h3>Book a reserved seat</h3><p>Tokyo → Shin-Osaka on the Nozomi is 2h27,
+        ¥14,720 unreserved or ¥15,490 reserved per adult. Reserve. An infant on your lap is free, but
+        unreserved cars mean standing if you board at the wrong moment, and you cannot do that with a
+        baby and luggage. Book at <a href="https://smart-ex.jp/en/">Smart-EX</a> a month out.</p></div>
+      <div class="note"><h3>Ask for seats 1A–1E</h3><p>The front row of each car has extra legroom for a
+        bassinet or floor bag. Car 11 on every Nozomi has a <b>multipurpose room</b> — a private lockable
+        cabin the conductor will open for nursing or a nappy change. Say <em>junyūshitsu</em> and point
+        at the baby; they know exactly what you mean.</p></div>
+      <div class="note"><h3>Oversized luggage needs a reservation</h3><p>Bags over 160cm total
+        dimensions require a free advance booking for the space behind the back row. Easier option:
+        forward your big cases hotel-to-hotel with <a href="https://www.kuronekoyamato.co.jp/en/personal/">Yamato</a>
+        for ~¥2,000 a case and travel with a daypack.</p></div>
+      <div class="note"><h3>Skip the JR Pass — again</h3><p>A 7-day nationwide pass is ¥50,000pp. Your
+        only long leg is this one at ¥15,490. Buying the single ticket saves roughly ¥35,000 each. Passes
+        only pay off if you're crossing the country repeatedly, which you are not.</p></div>
+      <div class="note"><h3>Fly open-jaw</h3><p>Book into Haneda and out of Kansai (KIX). It costs
+        little or nothing extra on most carriers and saves you a wasted day and ¥31,000 backtracking to
+        Tokyo. Check this before you book flights — it's the single biggest structural saving here.</p></div>
+      <div class="note"><h3>Ekiben is the point</h3><p>Buy bentō on the platform at Tokyo Station, not
+        on board. <a href="https://www.gransta.jp/">Ekibenya Matsuri</a> has 170 varieties. Eating it as
+        Fuji goes past on the right-hand side around minute 40 is the whole experience — sit on the
+        <b>E side</b> for the view.</p></div>
+    </div>
+  </section>
+
+  <section id="baby">
+    <span class="eyebrow">Travelling with an infant</span>
+    <h2>What actually changes</h2>
+    <p class="lede">Japan is one of the easiest places in the world to do this — the infrastructure is
+      genuinely there, it just isn't signposted in English. Six things worth knowing before you land.</p>
+    <div class="notes">
+      <div class="note"><h3>Stations are the hard part</h3><p>Not the crowds — the stairs. Some older
+        stations have one lift hidden at the far end. Search the station on Google Maps and follow the
+        "wheelchair accessible" route; the same lifts serve strollers. When it looks grim, take a taxi —
+        that's why there's a taxi line in the budget.</p></div>
+      <div class="note"><h3>Taxis need no car seat</h3><p>Japanese law exempts taxis from child-restraint
+        rules, so you can flag one down and hold the baby. Drivers will fold the stroller into the boot.
+        Base fare is ¥500 in Tokyo, ¥600 in Osaka; short hops run ¥1,000–2,000.</p></div>
+      <div class="note"><h3>Baby rooms are everywhere</h3><p>Look for 授乳室 (nursing room) or ベビー休憩室.
+        Every department store, mall and major station has them: private nursing booths, changing tables,
+        hot water for formula, microwaves. Spotless, and free.</p></div>
+      <div class="note"><h3>Buy supplies there</h3><p>Don't pack nine days of nappies. Drugstores
+        (Matsukiyo, Welcia, Kokumin) and every konbini sell Merries and Moony nappies, wipes and formula.
+        Pack 48 hours' worth and a few familiar bottles; buy the rest on day one.</p></div>
+      <div class="note"><h3>Carrier over stroller</h3><p>If you bring one thing, bring the carrier.
+        Temples are gravel, old streets have no kerb cuts, teamLab bans strollers, Kyoto in koyo season
+        is shoulder-to-shoulder. A compact travel stroller for the flat districts plus a carrier for
+        everywhere else is the right combination.</p></div>
+      <div class="note"><h3>Osaka is easier than Tokyo</h3><p>Smaller, flatter, and far more relaxed
+        about a baby in a restaurant. Dotonbori and Kuromon are stroller-navigable outside peak hours,
+        and Osakans will talk to your child in a way Tokyoites won't. The Kansai leg is the gentler half
+        of this trip by design.</p></div>
+    </div>
+  </section>
+
+  <section id="eat">
+    <span class="eyebrow">Where to eat</span>
+    <h2>The food list</h2>
+    <p class="lede">Tokyo holds more Michelin stars than any city on earth; Osaka has a word for eating
+      itself bankrupt (<em>kuidaore</em>). Prices are per person before drinks. <b>¥</b> under 1,500 ·
+      <b>¥¥</b> 1,500–4,000 · <b>¥¥¥</b> 4,000–12,000 · <b>¥¥¥¥</b> above that. With a baby, split these
+      into two groups: counter-only ramen and sushi bars are a solo errand while one of you stays back,
+      and everywhere else — depachika, family restaurants, izakaya with tables — is genuinely welcoming.</p>
+    <div id="food"></div>
+  </section>
+
+  <section id="stay">
+    <span class="eyebrow">Where to sleep</span>
+    <h2>Hotels, three tiers, two cities</h2>
+    <p class="lede">Rates are for the <b>whole room, three occupants</b>. Japanese hotels price per
+      person and enforce occupancy strictly — a standard double will not let you add an infant, so you
+      need a triple, a family room, or an apartment. Say <em>akachan</em> (infant) and the age when
+      booking; cots are usually free but limited, so request at reservation, not arrival.</p>
+    <div class="hotels" id="hotels"></div>
+  </section>
+
+  <section id="weather">
+    <span class="eyebrow">Climate</span>
+    <h2>When to come</h2>
+    <p class="lede">Both cities run humid subtropical, with Osaka a degree or two milder than Tokyo
+      all winter. Bars show Tokyo's average daily low-to-high range and monthly rainfall. Your two
+      months are highlighted.</p>
+
+    <div class="tip" style="margin:0 0 22px;padding:16px 18px">
+      <b>Your window · 21 Nov – 5 Dec 2026</b>
+      You have picked the best two weeks of the Japanese year, and adding Kansai makes it better.
+      Tokyo's autumn colour peaks around 20 Nov–5 Dec, very late by national standards. <b>Kyoto peaks
+      in almost exactly the same window</b> — mid-November to the first days of December — so Fushimi
+      Inari and Arashiyama on day 7 land at maximum colour. Rainfall drops to 96mm in November and 58mm
+      in December, the two driest months, and Fuji visibility from the shinkansen is at its annual best
+      in cold dry air.
+      <br><br>
+      Three dates to plan around. <b>23 Nov 2026 (Monday) is Labour Thanksgiving Day</b>, making 21–23
+      Nov a three-day weekend — keep Kyoto and Nara off those dates, they are the worst-hit places in
+      Japan for it. <b>Kyoto in koyo season is genuinely overwhelmed</b>: go on a weekday, start at
+      07:00, and use the carrier not the stroller. And <b>early December fills with illumination
+      crowds</b>, so book any timed night entry online. For the baby, the trade-off is cold rather than
+      heat: 9–18°C in November, 4–13°C by early December, sharp evenings. Pack a proper layer.
+    </div>
+
+    <div class="wx" id="wx"></div>
+    <div class="packing">
+      <div class="note"><h3>Osaka vs Tokyo</h3><p>Osaka runs about 1–2°C warmer year-round and slightly
+        wetter in summer. In your window expect 11–19°C in late November, 6–14°C in early December —
+        marginally kinder than Tokyo for an infant.</p></div>
+      <div class="note"><h3>Kyoto is colder</h3><p>Basin geography: Kyoto gets a few degrees colder than
+        Osaka overnight and holds morning fog. On the day-7 trip, dress the baby for 4°C at 07:00 even
+        if Osaka feels mild when you leave.</p></div>
+      <div class="note"><h3>What to pack</h3><p>Layers over bulk — every train, shop and restaurant is
+        heated hard, so you'll be stripping the baby down indoors constantly. A packable rain cover for
+        the stroller, and warmer legwear than you think for the evenings.</p></div>
+      <div class="note"><h3>The one risk</h3><p>Not weather — crowds. Late November is peak domestic
+        travel season for autumn colour. Book hotels by August and any timed entry the month it opens.</p></div>
+    </div>
+  </section>
+
+  <section id="money">
+    <span class="eyebrow">The numbers</span>
+    <h2>What it costs</h2>
+    <p class="lede">Whole household, nine nights, two cities, excluding international flights. The baby
+      is free at every sight here and free on every train — what an infant actually adds is nappies, a
+      taxi budget, and a bigger hotel room. That last one is the expensive part.</p>
+    <div class="scroll"><table id="budget"><thead><tr>
+      <th>Line item</th><th>Notes</th><th style="text-align:right">Yen</th><th style="text-align:right">USD</th>
+    </tr></thead><tbody></tbody></table></div>
+  </section>
+
+  <section id="know">
+    <span class="eyebrow">Before you go</span>
+    <h2>Things worth knowing</h2>
+    <div class="notes">
+      <div class="note"><h3>One IC card, both cities</h3><p>Suica and PASMO from Tokyo work on Osaka's
+        subway, Kyoto's buses and every konbini nationwide. Load
+        <a href="https://www.jreast.co.jp/multi/en/pass/suica.html">Suica</a> onto your phone before you
+        fly. Under-6s ride free, so the baby needs nothing.</p></div>
+      <div class="note"><h3>Book these in advance</h3><p>teamLab, Shibuya Sky, Rikugien's night entry and
+        the Nozomi seats all sell out weeks ahead in late November. The
+        <a href="https://www.ghibli-museum.jp/en/">Ghibli Museum</a> runs a monthly lottery — under-4s
+        free, and a good baby stop if you win it.</p></div>
+      <div class="note"><h3>Airport transfers</h3><p>Into Haneda: <a href="https://webservice.limousinebus.co.jp/web/en/">Limousine Bus</a>
+        ~¥1,300pp, stroller in the hold, no stairs. Out of KIX: the same operator runs Osaka hotels to
+        KIX for ~¥1,800pp, easier than the Nankai with luggage and a pram.</p></div>
+      <div class="note"><h3>No sumo in your window</h3><p>Tokyo tournaments are January, May and
+        September only, so late November misses all three. Book a morning stable practice (asageiko)
+        instead, ~¥10,000pp. Quiet and seated — babies are fine.</p></div>
+      <div class="note"><h3>Cash still matters</h3><p>Cards are near-universal now, but small izakaya,
+        shrines, Kuromon stalls and Tsukiji stay cash-only. 7-Eleven ATMs take foreign cards; most bank
+        ATMs won't.</p></div>
+      <div class="note"><h3>What got cut</h3><p>Adding Kansai costs you the Mt Fuji day trip and
+        Kamakura. You still see Fuji from the shinkansen on day 6, and Kyoto more than replaces
+        Kamakura's temples. Nine nights cannot hold both halves — this is the right trade.</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <b style="color:var(--tx-2)">On the illustrations.</b> Every image on this page is a vector drawing
+    made for it, not a photograph. Published pages block external image hosts, and embedding
+    photographers' work into a page you might share isn't mine to do. If you want real photos, add your
+    own image files alongside this one and they can be wired in.
+    <br><br>
+    Costed for two adults and one infant under 2, nine nights, late November into December 2026. Prices
+    are estimates in yen from published 2025 rates and will drift over a year — planning figures, not
+    quotes. Child thresholds vary: most sights here are free under 6, Osaka Castle is free under 15,
+    teamLab is free under 3, and an infant becomes a paying air passenger at 2. Late-November rates are
+    already high season for autumn colour, so book by August. Verify opening hours and baby-room
+    locations on each venue's own site before building a day around it.
+  </footer>
+</div>
+
+<script>
+(function(){
+  const YEN = 155;
+  const usd = y => "$" + Math.round(y/YEN).toLocaleString();
+  const yen = y => "¥" + y.toLocaleString();
+  const map = q => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q);
+
+  // Rail line colours — official Tokyo Metro, Toei, JR and Osaka Metro hex values
+  const L = {
+    yamanote:{n:"JR Yamanote Line",c:"#9ACD32"}, chiyoda:{n:"Chiyoda Line",c:"#00BB85"},
+    asakusa:{n:"Asakusa Line",c:"#E85298"},      ginza:{n:"Ginza Line",c:"#F39700"},
+    yurikamome:{n:"Yurikamome",c:"#0079C2"},     tokaido:{n:"Tokaido Shinkansen",c:"#0068B7"},
+    jrkyoto:{n:"JR Kyoto Line",c:"#0072BC"},     kintetsu:{n:"Kintetsu Nara Line",c:"#C1272D"},
+    midosuji:{n:"Midosuji Line",c:"#E5171F"},    nankai:{n:"Nankai Airport Line",c:"#003894"}
+  };
+
+  // ---------- illustrations: flat vector, three depth layers, theme-aware ----------
+  const S = (inner,vb) => `<svg class="illo" viewBox="${vb||"0 0 400 150"}" role="img" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
+  const sky  = `<rect width="400" height="150" fill="var(--il-sky)"/>`;
+  const sun  = (x,y,r) => `<circle cx="${x}" cy="${y}" r="${r}" fill="var(--accent-ink)" opacity=".85"/>`;
+
+  const ILLO = {
+   // Tokyo skyline with the Metropolitan Government twin towers
+   shinjuku: S(sky + sun(320,44,20) +
+     `<g fill="var(--il-far)"><rect x="8" y="86" width="26" height="64"/><rect x="44" y="72" width="20" height="78"/>
+      <rect x="352" y="80" width="24" height="70"/><rect x="380" y="94" width="18" height="56"/></g>
+      <g fill="var(--il-mid)"><rect x="74" y="58" width="30" height="92"/><rect x="112" y="76" width="22" height="74"/>
+      <rect x="296" y="66" width="26" height="84"/><rect x="330" y="88" width="18" height="62"/></g>
+      <g fill="var(--il-near)">
+        <rect x="150" y="34" width="20" height="116"/><rect x="196" y="34" width="20" height="116"/>
+        <rect x="170" y="58" width="26" height="92"/><rect x="146" y="26" width="28" height="12"/>
+        <rect x="192" y="26" width="28" height="12"/><rect x="232" y="70" width="34" height="80"/>
+      </g>
+      <g fill="var(--il-sky)" opacity=".55">
+        <rect x="154" y="46" width="12" height="4"/><rect x="154" y="60" width="12" height="4"/>
+        <rect x="154" y="74" width="12" height="4"/><rect x="200" y="46" width="12" height="4"/>
+        <rect x="200" y="60" width="12" height="4"/><rect x="200" y="74" width="12" height="4"/>
+        <rect x="238" y="82" width="22" height="4"/><rect x="238" y="96" width="22" height="4"/>
+        <rect x="238" y="110" width="22" height="4"/>
+      </g>`),
+
+   // Shibuya scramble — towers, screens, crossing stripes
+   shibuya: S(sky +
+     `<g fill="var(--il-far)"><rect x="0" y="52" width="54" height="66"/><rect x="330" y="46" width="46" height="72"/>
+      <rect x="376" y="66" width="24" height="52"/></g>
+      <g fill="var(--il-mid)"><rect x="62" y="30" width="58" height="88"/><rect x="270" y="24" width="56" height="94"/></g>
+      <g fill="var(--il-near)"><rect x="130" y="14" width="62" height="104"/><rect x="202" y="40" width="58" height="78"/></g>
+      <rect x="140" y="26" width="42" height="30" fill="var(--accent-ink)" opacity=".9"/>
+      <rect x="212" y="52" width="38" height="24" fill="var(--accent-ink)" opacity=".45"/>
+      <g fill="var(--il-sky)" opacity=".5"><rect x="72" y="42" width="38" height="5"/><rect x="72" y="58" width="38" height="5"/>
+       <rect x="72" y="74" width="38" height="5"/><rect x="280" y="38" width="36" height="5"/>
+       <rect x="280" y="54" width="36" height="5"/><rect x="280" y="70" width="36" height="5"/></g>
+      <rect x="0" y="118" width="400" height="32" fill="var(--il-ink)" opacity=".92"/>
+      <g fill="#C2CEDC" opacity=".9">
+       <rect x="14" y="126" width="26" height="5"/><rect x="52" y="126" width="26" height="5"/>
+       <rect x="90" y="126" width="26" height="5"/><rect x="128" y="126" width="26" height="5"/>
+       <rect x="166" y="126" width="26" height="5"/><rect x="204" y="126" width="26" height="5"/>
+       <rect x="242" y="126" width="26" height="5"/><rect x="280" y="126" width="26" height="5"/>
+       <rect x="318" y="126" width="26" height="5"/><rect x="356" y="126" width="26" height="5"/></g>
+      <g fill="#C2CEDC" opacity=".6">
+       <circle cx="96" cy="140" r="4"/><circle cx="150" cy="143" r="4"/><circle cx="214" cy="139" r="4"/>
+       <circle cx="268" cy="143" r="4"/><circle cx="322" cy="140" r="4"/></g>`),
+
+   // Senso-ji: five-storey pagoda left, Kaminarimon gate and its lantern right
+   senso: S(sky + sun(58,36,17) +
+     `<g fill="var(--il-far)"><path d="M0 150v-44l30-10 26 10v44z" opacity=".6"/></g>
+      <g fill="var(--il-near)">
+       <rect x="104" y="30" width="6" height="16"/>
+       <path d="M74 50h66l-10-12H84z"/><rect x="92" y="50" width="30" height="12"/>
+       <path d="M68 76h78l-12-14H80z"/><rect x="88" y="76" width="38" height="14"/>
+       <path d="M62 104h90l-14-14H76z"/><rect x="84" y="104" width="46" height="16"/>
+       <path d="M56 134h102l-16-14H72z"/><rect x="80" y="134" width="54" height="16"/></g>
+      <g fill="var(--il-mid)"><rect x="212" y="88" width="17" height="62"/><rect x="318" y="88" width="17" height="62"/>
+       <rect x="206" y="140" width="29" height="10"/><rect x="312" y="140" width="29" height="10"/></g>
+      <path d="M196 90q10-14 22-30h136q12 16 22 30z" fill="var(--il-near)"/>
+      <path d="M214 60h120l-6-9H220z" fill="var(--il-near)"/>
+      <rect x="252" y="45" width="44" height="7" rx="2" fill="var(--il-near)"/>
+      <rect x="264" y="90" width="20" height="7" fill="var(--il-mid)"/>
+      <ellipse cx="274" cy="118" rx="21" ry="25" fill="var(--accent-ink)"/>
+      <rect x="253" y="113" width="42" height="10" fill="var(--il-near)" opacity=".65"/>
+      <ellipse cx="274" cy="97" rx="9" ry="3" fill="var(--il-near)"/>
+      <ellipse cx="274" cy="140" rx="8" ry="3" fill="var(--il-near)"/>`),
+
+   // Tsukiji: a lantern rail over striped stall canopies, crates and ice at the front
+   tsukiji: S(sky +
+     `<rect x="0" y="16" width="400" height="7" fill="var(--il-mid)"/>
+      <g fill="var(--il-mid)"><rect x="58" y="23" width="3" height="11"/><rect x="158" y="23" width="3" height="11"/>
+       <rect x="258" y="23" width="3" height="11"/><rect x="348" y="23" width="3" height="11"/></g>
+      <g fill="var(--accent-ink)"><ellipse cx="59.5" cy="46" rx="10" ry="13"/><ellipse cx="159.5" cy="46" rx="10" ry="13"/>
+       <ellipse cx="259.5" cy="46" rx="10" ry="13"/><ellipse cx="349.5" cy="46" rx="10" ry="13"/></g>
+      <g fill="var(--il-near)" opacity=".6"><rect x="49" y="43" width="21" height="6"/><rect x="149" y="43" width="21" height="6"/>
+       <rect x="249" y="43" width="21" height="6"/><rect x="339" y="43" width="21" height="6"/></g>
+      <g fill="var(--il-near)"><path d="M4 96l10-18h108l10 18z"/><path d="M140 96l10-18h108l10 18z"/><path d="M276 96l10-18h108l10 18z"/></g>
+      <g fill="var(--il-sky)" opacity=".22">
+       <path d="M28 96l10-18h14l-10 18z"/><path d="M56 96l10-18h14l-10 18z"/><path d="M84 96l10-18h14l-10 18z"/>
+       <path d="M164 96l10-18h14l-10 18z"/><path d="M192 96l10-18h14l-10 18z"/><path d="M220 96l10-18h14l-10 18z"/>
+       <path d="M300 96l10-18h14l-10 18z"/><path d="M328 96l10-18h14l-10 18z"/><path d="M356 96l10-18h14l-10 18z"/></g>
+      <g fill="var(--il-mid)"><rect x="10" y="96" width="7" height="54"/><rect x="126" y="96" width="7" height="54"/>
+       <rect x="146" y="96" width="7" height="54"/><rect x="262" y="96" width="7" height="54"/>
+       <rect x="282" y="96" width="7" height="54"/><rect x="392" y="96" width="7" height="54"/></g>
+      <g fill="var(--il-near)"><rect x="20" y="118" width="104" height="10" rx="2"/>
+       <rect x="156" y="118" width="104" height="10" rx="2"/><rect x="292" y="118" width="100" height="10" rx="2"/></g>
+      <g fill="var(--il-mid)" opacity=".85"><rect x="28" y="128" width="42" height="22" rx="2"/>
+       <rect x="80" y="128" width="36" height="22" rx="2"/><rect x="166" y="128" width="40" height="22" rx="2"/>
+       <rect x="214" y="128" width="38" height="22" rx="2"/><rect x="300" y="128" width="44" height="22" rx="2"/>
+       <rect x="352" y="128" width="34" height="22" rx="2"/></g>
+      <g fill="var(--il-sky)" opacity=".45">
+       <ellipse cx="42" cy="114" rx="13" ry="4"/><ellipse cx="96" cy="114" rx="11" ry="4"/>
+       <ellipse cx="182" cy="114" rx="13" ry="4"/><ellipse cx="232" cy="114" rx="11" ry="4"/>
+       <ellipse cx="318" cy="114" rx="13" ry="4"/><ellipse cx="366" cy="114" rx="11" ry="4"/></g>
+      <g fill="var(--accent-ink)" opacity=".5"><circle cx="42" cy="114" r="2.5"/><circle cx="182" cy="114" r="2.5"/>
+       <circle cx="318" cy="114" r="2.5"/></g>`),
+
+   // teamLab: concentric light, water reflection
+   teamlab: S(`<rect width="400" height="150" fill="var(--il-dark)"/>
+      <g fill="none" stroke="var(--accent-ink)" stroke-width="2">
+       <circle cx="200" cy="66" r="16" opacity=".95"/><circle cx="200" cy="66" r="30" opacity=".7"/>
+       <circle cx="200" cy="66" r="44" opacity=".5"/><circle cx="200" cy="66" r="58" opacity=".32"/>
+       <circle cx="200" cy="66" r="72" opacity=".18"/><circle cx="200" cy="66" r="86" opacity=".1"/></g>
+      <g fill="var(--accent-ink)"><circle cx="200" cy="66" r="6"/>
+       <circle cx="96" cy="38" r="3" opacity=".8"/><circle cx="308" cy="30" r="2.5" opacity=".7"/>
+       <circle cx="60" cy="84" r="2" opacity=".6"/><circle cx="342" cy="78" r="3" opacity=".75"/>
+       <circle cx="146" cy="20" r="2" opacity=".5"/><circle cx="262" cy="96" r="2.5" opacity=".6"/></g>
+      <rect x="0" y="112" width="400" height="38" fill="#1B2740"/>
+      <g fill="var(--accent-ink)" opacity=".4">
+       <rect x="150" y="120" width="100" height="3" rx="1.5"/><rect x="166" y="130" width="68" height="3" rx="1.5"/>
+       <rect x="180" y="140" width="40" height="3" rx="1.5"/></g>`),
+
+   // Shinkansen nose with Fuji behind
+   shinkansen: S(sky + sun(60,36,16) +
+     `<path d="M236 96 300 30l64 66z" fill="var(--il-mid)"/>
+      <path d="M282 48l18-18 18 18-10 5-8-5-8 5z" fill="var(--il-sky)"/>
+      <g fill="var(--il-far)"><path d="M0 96l52-34 46 34z"/><path d="M120 96l40-26 34 26z"/></g>
+      <rect x="0" y="96" width="400" height="12" fill="var(--il-near)" opacity=".5"/>
+      <path d="M40 140V116c0-9 8-14 22-16l52-8c26-4 40 2 52 10l18 14v24z" fill="var(--il-near)"/>
+      <path d="M186 140v-24h174v24z" fill="var(--il-near)"/>
+      <path d="M40 122c0-6 10-10 24-12l50-8c22-3 34 2 44 9z" fill="var(--il-sky)" opacity=".55"/>
+      <g fill="var(--il-sky)" opacity=".55"><rect x="196" y="120" width="26" height="9" rx="2"/>
+       <rect x="232" y="120" width="26" height="9" rx="2"/><rect x="268" y="120" width="26" height="9" rx="2"/>
+       <rect x="304" y="120" width="26" height="9" rx="2"/><rect x="340" y="120" width="20" height="9" rx="2"/></g>
+      <rect x="40" y="132" width="320" height="5" fill="var(--accent-ink)"/>
+      <rect x="0" y="144" width="400" height="6" fill="var(--il-ink)" opacity=".6"/>`),
+
+   // Fushimi Inari: a receding tunnel of torii
+   torii: S(`<rect width="400" height="150" fill="var(--il-sky)"/>
+      <rect x="0" y="120" width="400" height="30" fill="var(--il-near)" opacity=".35"/>
+      ${[0,1,2,3,4,5,6].map(i=>{
+        const k=1-i*0.12, w=150*k, h=118*k, x=200-w/2, top=150-h-8*i*0.6, op=1-i*0.1;
+        return `<g fill="var(--accent-ink)" opacity="${op.toFixed(2)}">
+          <rect x="${x+10}" y="${top+14}" width="${12*k}" height="${h-14}"/>
+          <rect x="${x+w-10-12*k}" y="${top+14}" width="${12*k}" height="${h-14}"/>
+          <rect x="${x-4}" y="${top}" width="${w+8}" height="${9*k}" rx="2"/>
+          <rect x="${x+4}" y="${top+16*k}" width="${w-8}" height="${7*k}"/></g>`;
+      }).join("")}
+      <g fill="var(--il-ink)" opacity=".25"><rect x="0" y="140" width="400" height="10"/></g>`),
+
+   // Nara: deer and the Todai-ji roofline
+   nara: S(sky + sun(330,40,17) +
+     `<g fill="var(--il-far)"><path d="M40 92h180l-24-22H64z"/><rect x="70" y="92" width="120" height="30"/>
+       <path d="M56 70h148l-20-16H76z"/></g>
+      <rect x="0" y="122" width="400" height="28" fill="var(--il-mid)" opacity=".45"/>
+      <g fill="var(--il-near)">
+        <path d="M250 138v-26c0-8 6-14 16-14h34c9 0 15 6 15 14v26h-9v-20h-47v20z"/>
+        <path d="M300 100l14-12v-8l6 6 7-8v10l-11 14z"/>
+        <path d="M316 84l-4-12 5 2 3-8 3 9 5-3z"/>
+        <path d="M330 82l6-10 1 6 6-5-2 9-5 4z"/>
+        <circle cx="318" cy="96" r="9"/>
+      </g>
+      <g fill="var(--il-sky)" opacity=".6"><circle cx="262" cy="112" r="2.5"/><circle cx="276" cy="120" r="2.5"/>
+       <circle cx="290" cy="110" r="2.5"/></g>
+      <g fill="var(--il-near)" opacity=".55"><path d="M180 138v-18c0-6 4-9 11-9h22c6 0 10 3 10 9v18h-6v-13h-31v13z"/>
+       <circle cx="222" cy="114" r="6"/><path d="M226 106l8-8v-6l4 5 5-6v8l-8 9z"/></g>`),
+
+   // Osaka Castle on its stone base
+   castle: S(sky + sun(66,38,17) +
+     `<g fill="var(--il-far)"><rect x="0" y="118" width="400" height="32"/></g>
+      <path d="M96 150v-34l104-16 104 16v34z" fill="var(--il-mid)"/>
+      <g fill="var(--il-sky)" opacity=".3"><path d="M120 150v-42M152 150v-46M184 150v-49M216 150v-49M248 150v-46M280 150v-42" stroke="var(--il-sky)" stroke-width="2" fill="none"/></g>
+      <g fill="var(--il-near)">
+        <path d="M124 106h152l-22-16H146z"/><rect x="146" y="88" width="108" height="6"/>
+        <path d="M134 84h132l-20-16H154z"/><rect x="154" y="66" width="92" height="6"/>
+        <path d="M144 62h112l-18-15H162z"/><rect x="162" y="45" width="76" height="6"/>
+        <path d="M154 42h92l-16-14H170z"/><rect x="170" y="26" width="60" height="6"/>
+        <path d="M166 24h68l-14-13H180z"/>
+        <rect x="196" y="4" width="8" height="8"/></g>
+      <g fill="var(--accent-ink)">
+        <rect x="146" y="94" width="108" height="4"/><rect x="154" y="72" width="92" height="4"/>
+        <rect x="162" y="51" width="76" height="4"/><rect x="170" y="32" width="60" height="4"/>
+        <circle cx="200" cy="8" r="4"/></g>`),
+
+   // Dotonbori: canal, neon, a runner sign
+   dotonbori: S(`<rect width="400" height="150" fill="var(--il-dark)"/>
+      <g fill="var(--il-far)"><rect x="0" y="14" width="86" height="88"/><rect x="330" y="20" width="70" height="82"/></g>
+      <g fill="var(--il-mid)"><rect x="94" y="6" width="72" height="96"/><rect x="248" y="18" width="74" height="84"/>
+       <rect x="174" y="26" width="66" height="76"/></g>
+      <rect x="104" y="16" width="52" height="46" rx="3" fill="var(--accent-ink)"/>
+      <g fill="var(--il-ink)">
+        <circle cx="126" cy="28" r="5"/>
+        <path d="M120 34l10 6-2 12 6 8-4 3-7-9 1-9-6-4z"/>
+        <path d="M130 40l10-3 3 5-11 4z"/>
+        <path d="M124 52l-8 8 4 3 9-8z"/></g>
+      <g fill="var(--accent-ink)" opacity=".55"><rect x="186" y="36" width="42" height="14" rx="2"/>
+       <rect x="258" y="30" width="24" height="40" rx="2"/><rect x="292" y="30" width="20" height="40" rx="2"/></g>
+      <g fill="var(--il-sky)" opacity=".35"><rect x="12" y="26" width="60" height="5"/><rect x="12" y="42" width="60" height="5"/>
+       <rect x="12" y="58" width="60" height="5"/><rect x="342" y="32" width="46" height="5"/>
+       <rect x="342" y="48" width="46" height="5"/><rect x="342" y="64" width="46" height="5"/></g>
+      <rect x="0" y="102" width="400" height="6" fill="var(--il-near)"/>
+      <rect x="0" y="108" width="400" height="42" fill="var(--il-near)" opacity=".35"/>
+      <g fill="var(--accent-ink)" opacity=".45">
+       <rect x="108" y="116" width="46" height="4" rx="2"/><rect x="116" y="126" width="32" height="4" rx="2"/>
+       <rect x="186" y="120" width="40" height="4" rx="2"/><rect x="258" y="116" width="52" height="4" rx="2"/>
+       <rect x="266" y="130" width="36" height="4" rx="2"/></g>`),
+
+   // Kansai airport: bay, terminal, departing plane
+   bay: S(sky + sun(58,34,15) +
+     `<g fill="var(--il-near)" transform="rotate(-18 240 60)">
+        <path d="M196 58h96l14 6-14 6h-96l-8-6z"/>
+        <path d="M232 60l-16-24h10l26 24z"/><path d="M232 64l-16 24h10l26-24z"/>
+        <path d="M288 58l-9-13h6l14 13z"/></g>
+      <g fill="var(--il-far)" opacity=".7"><path d="M40 74h34l6 3-6 3H40l-4-3z"/><path d="M54 76l-6-9h4l10 9z"/></g>
+      <rect x="0" y="104" width="400" height="46" fill="var(--il-mid)" opacity=".5"/>
+      <path d="M60 104h280l-14-14H74z" fill="var(--il-near)"/>
+      <rect x="86" y="104" width="228" height="16" fill="var(--il-near)" opacity=".9"/>
+      <g fill="var(--accent-ink)" opacity=".7"><rect x="96" y="108" width="18" height="7"/><rect x="124" y="108" width="18" height="7"/>
+       <rect x="152" y="108" width="18" height="7"/><rect x="180" y="108" width="18" height="7"/>
+       <rect x="208" y="108" width="18" height="7"/><rect x="236" y="108" width="18" height="7"/>
+       <rect x="264" y="108" width="18" height="7"/><rect x="292" y="108" width="14" height="7"/></g>
+      <g fill="var(--il-sky)" opacity=".28"><rect x="0" y="128" width="400" height="3"/><rect x="0" y="138" width="400" height="3"/></g>`)
+  };
+
+  // ---------- the ten days ----------
+  const days = [
+  {n:1,city:"tokyo",line:"yamanote",illo:"shinjuku",cap:"Shinjuku at dusk · Metropolitan Government towers",
+   t:"Land, drop bags, eat standing up",s:"Tokyo · Shinjuku",
+   tip:{h:"Jet lag rule",b:"Do not nap. Stay out until 21:00 local and the rest of the trip fixes itself."},
+   baby:"You will not beat the jet lag, so plan around it: get outside for daylight, eat early, accept 04:00 wake-ups for two or three days. The Metropolitan Government Building has a nursing room on the ground floor.",
+   stops:[
+    {t:"15:00",n:"Check in — Shinjuku",d:"Drop bags, shower, get straight back out. Rooms are small; you won't be in it.",p:0,pl:"see hotels"},
+    {t:"16:30",n:"Tokyo Metropolitan Government Building",d:"202m observatory, free, and on a clear cold afternoon the best free Fuji view in the city.",p:0,
+     u:"https://www.yokoso.metro.tokyo.lg.jp/tenbou/",m:"Tokyo Metropolitan Government Building Observatory"},
+    {t:"18:30",n:"Omoide Yokocho",d:"Six alleys of eight-seat yakitori counters under the tracks. Point at what's grilling.",p:2500,m:"Omoide Yokocho Shinjuku"},
+    {t:"20:00",n:"Back to the hotel",d:"Golden Gai is the classic day-one nightcap and it does not work with an infant — indoor smoking, closet-sized bars, many refuse under-20s outright. Konbini beer in the room instead.",p:800,m:"Lawson Shinjuku"}
+   ]},
+  {n:2,city:"tokyo",line:"chiyoda",illo:"shibuya",cap:"Shibuya scramble · screens and ten crossings",
+   t:"Shrine forest to scramble crossing",s:"Tokyo · Harajuku & Shibuya",
+   tip:{h:"Book ahead",b:"Shibuya Sky sunset slots go on sale 4 weeks out and sell out in days. Aim for 30 min before sunset — around 16:30 in late November."},
+   baby:"Meiji Jingu is deep gravel — carrier beats stroller. Shibuya Sky bans strollers on the open rooftop (free storage below) and it is genuinely cold and windy up there in December; the indoor floor has the same view through glass.",
+   stops:[
+    {t:"08:30",n:"Meiji Jingu",d:"120,000 donated trees planted a century ago as a fake forest that became a real one. Arrive early, it empties.",p:0,
+     u:"https://www.meijijingu.or.jp/en/",m:"Meiji Jingu"},
+    {t:"10:30",n:"Meiji Jingu Gaien ginkgo avenue",d:"300 metres of golden ginkgo, peaking almost exactly in your window. Ten minutes east of the shrine and free.",p:0,m:"Meiji Jingu Gaien Ginkgo Avenue"},
+    {t:"12:00",n:"Takeshita Street",d:"Teen fashion at full volume, crêpes, rainbow cotton candy. Ten minutes is enough.",p:1200,m:"Takeshita Street Harajuku"},
+    {t:"13:30",n:"Cat Street → Omotesando",d:"The walk between the two is the point: Herzog & de Meuron's Prada box, Ando's Omotesando Hills.",p:0,m:"Cat Street Harajuku"},
+    {t:"15:30",n:"Shibuya Crossing + Hachiko",d:"Watch it from the Starbucks upstairs first, then walk it.",p:0,m:"Shibuya Crossing"},
+    {t:"16:15",n:"Shibuya Sky",d:"Open-air rooftop at 229m. Best sunset view in the city, no glass in the way.",p:2500,
+     u:"https://www.shibuya-scramble-square.com/sky/",m:"Shibuya Sky"},
+    {t:"19:00",n:"Dinner — Uobei or Ichiran",d:"Conveyor sushi at ¥180/plate, or the solo-booth ramen everyone photographs.",p:1800,m:"Ichiran Shibuya"}
+   ]},
+  {n:3,city:"tokyo",line:"asakusa",illo:"senso",cap:"Senso-ji · the great lantern and the five-storey pagoda",
+   t:"Old town, temple smoke, river",s:"Tokyo · Asakusa & Ueno",
+   tip:{h:"Go at 07:00",b:"Senso-ji's grounds never close. Before 08:00 you get the temple almost alone; by 11:00 it's shoulder to shoulder."},
+   baby:"The best day of the Tokyo leg with a baby. Senso-ji at 07:30 is empty and stroller-flat, Ueno Park is wide open, and the zoo has changing rooms every few hundred metres. Nakamise is impassable with a stroller after 11:00.",
+   stops:[
+    {t:"07:30",n:"Senso-ji & Kaminarimon",d:"Tokyo's oldest temple, founded 628. Wave the incense smoke over whatever hurts.",p:0,
+     u:"https://www.senso-ji.jp/english/",m:"Senso-ji Temple"},
+    {t:"09:00",n:"Nakamise-dori",d:"Snack street to the temple gate: ningyo-yaki, age-manju, melon pan.",p:1500,m:"Nakamise Shopping Street"},
+    {t:"10:30",n:"Kappabashi Kitchen Street",d:"Ten blocks of chef supply. A hand-forged knife or a plastic food replica — both excellent souvenirs.",p:0,m:"Kappabashi Street"},
+    {t:"13:00",n:"Sumida River cruise",d:"Asakusa to Hinode Pier, 40 min under twelve bridges. The Himiko boat is a Matsumoto Leiji spaceship.",p:1200,
+     u:"https://www.suijobus.co.jp/en/",m:"Asakusa Pier Tokyo Cruise"},
+    {t:"15:30",n:"Ueno Zoo & Ueno Park",d:"Giant pandas, flat wide paths, and Tokyo's best cluster of baby rooms. Free under 6. The National Museum is 4 min away if you want art instead — ¥1,000, strollers fine.",p:600,
+     u:"https://www.tokyo-zoo.net/english/ueno/",m:"Ueno Zoo"},
+    {t:"17:30",n:"Ameyoko Market",d:"Post-war black market turned loud food street. Standing seafood bars, ¥500 beers.",p:2500,m:"Ameyoko Market Ueno"}
+   ]},
+  {n:4,city:"tokyo",line:"ginza",illo:"tsukiji",cap:"Tsukiji outer market · awnings, lanterns, crates",
+   t:"Fish, gardens, department store basements",s:"Tokyo · Tsukiji & Ginza",
+   tip:{h:"Tsukiji vs Toyosu",b:"The wholesale auction moved to Toyosu; the good eating stayed at Tsukiji Outer Market. Go to Tsukiji for food, Toyosu only if you want the 05:30 tuna auction."},
+   baby:"Tsukiji lanes are narrow and packed — carrier only, and go at 08:00. Skip the Akihabara arcades, which are painfully loud. Ginza depachika have the best baby rooms in Tokyo: Matsuya and Mitsukoshi both have private nursing booths, bottle-warming taps and microwaves.",
+   stops:[
+    {t:"08:00",n:"Tsukiji Outer Market",d:"Grilled scallops, tamagoyaki on a stick, uni from the shell. Graze; don't sit down for one big meal.",p:3000,
+     u:"https://www.tsukiji.or.jp/english/",m:"Tsukiji Outer Market"},
+    {t:"10:30",n:"Hamarikyu Gardens",d:"Feudal duck-hunting grounds ringed by skyscrapers, with late maples in your window. Matcha in the teahouse on the pond, ¥1,000.",p:300,
+     u:"https://www.tokyo-park.or.jp/teien/en/hama-rikyu/",m:"Hamarikyu Gardens"},
+    {t:"13:00",n:"Akihabara",d:"Super Potato for retro games, Yodobashi for everything, Mandarake for manga. Arcades free to enter, ¥100 a play.",p:2000,m:"Akihabara Electric Town"},
+    {t:"16:00",n:"Ginza",d:"Itoya for stationery (twelve floors), Uniqlo flagship, Ginza Six rooftop. Window shopping is free and world-class.",p:0,m:"Ginza Tokyo"},
+    {t:"18:00",n:"Depachika dinner",d:"The basement food hall at Mitsukoshi or Matsuya. Restaurant-grade food, half price, discounted again after 19:30.",p:2000,m:"Mitsukoshi Ginza depachika"}
+   ]},
+  {n:5,city:"tokyo",line:"yurikamome",illo:"teamlab",cap:"teamLab · light on water, drawn from the installations",
+   t:"Digital art, the bay, and a lit garden",s:"Tokyo · Toyosu & Odaiba",
+   tip:{h:"Wear shorts",b:"teamLab Planets is barefoot and you wade through knee-deep water. They lend shorts, but bring your own — and note the water is heated, so November is fine."},
+   baby:"Planets is barefoot through knee-deep water — carrier only, no stroller past the entrance (free parking there), free for under-3s. Odaiba afterwards is the most stroller-friendly district in Tokyo: flat, wide, covered walkways between everything. Rikugien after dark is gravel but flat, and ends at 20:00.",
+   stops:[
+    {t:"09:30",n:"teamLab Planets TOKYO",d:"Barefoot, water-immersive digital art. About 90 min. Timed entry, book weeks ahead.",p:3800,
+     u:"https://www.teamlab.art/e/planets/",m:"teamLab Planets TOKYO"},
+    {t:"12:30",n:"Toyosu Market rooftop",d:"Walk the observation decks over the tuna floor, then sushi at Daiwa.",p:4000,
+     u:"https://www.toyosu-market.or.jp/en/",m:"Toyosu Market"},
+    {t:"15:00",n:"Odaiba — Gundam & the bay",d:"The 19.7m life-size Unicorn Gundam transforms on the hour. Free, faintly ridiculous, worth it.",p:0,m:"Unicorn Gundam Statue Odaiba"},
+    {t:"18:00",n:"Rikugien night illumination",d:"Edo-period garden, maples lit after dark — running late Nov to early Dec, exactly your window. Timed entry, book online. Ends 20:00.",p:900,
+     u:"https://www.tokyo-park.or.jp/teien/en/rikugien/",m:"Rikugien Gardens"}
+   ]},
+  {n:6,city:"kansai",line:"tokaido",illo:"shinkansen",cap:"Nozomi to Shin-Osaka · Fuji on the right at minute 40",
+   t:"Bullet train south, then neon",s:"Tokyo → Osaka · Dotonbori",
+   tip:{h:"Sit on the E side",b:"Seats D and E face Fuji, about 40 minutes out of Tokyo. On a cold clear morning in your window it fills the window. Reserve those seats specifically."},
+   baby:"Deliberately the light day. Two and a half hours on a train is the easiest travelling you'll do with an infant — car 11 has the private multipurpose room for feeding, and the ride is smooth enough for a full nap. Check in, sleep, then Dotonbori after dark when the neon does the entertaining for you.",
+   stops:[
+    {t:"09:00",n:"Tokyo Station — buy ekiben",d:"Ekibenya Matsuri on the concourse, 170 varieties. Buy before boarding; there's no proper food on the train.",p:1400,m:"Ekibenya Matsuri Tokyo Station"},
+    {t:"09:50",n:"Nozomi to Shin-Osaka",d:"2h27 at 285km/h. Reserved seats, D/E side for Fuji. Baby free on your lap.",p:15490,
+     u:"https://smart-ex.jp/en/",m:"Tokyo Station Shinkansen"},
+    {t:"13:00",n:"Check in — Namba or Umeda",d:"Drop everything. Osaka is compact; you're 10 minutes from dinner wherever you stay.",p:0,pl:"see hotels"},
+    {t:"15:00",n:"Hozenji Yokocho",d:"A stone-paved lane behind Dotonbori with a moss-covered Buddha the faithful splash with water. Two minutes and a world away from the neon.",p:0,m:"Hozenji Yokocho Osaka"},
+    {t:"17:00",n:"Dotonbori & the Glico sign",d:"The canal, the running-man neon, the mechanical crab. Loud, garish, completely unlike Tokyo — which is the point of coming.",p:0,m:"Dotonbori Osaka"},
+    {t:"18:30",n:"Okonomiyaki at Mizuno",d:"Michelin Bib Gourmand, one narrow room, yamaimo batter. Queue about 30 min, or Chibo across the canal with tables and a view.",p:1800,m:"Mizuno Okonomiyaki Dotonbori"}
+   ]},
+  {n:7,city:"kansai",line:"jrkyoto",illo:"torii",cap:"Fushimi Inari · ten thousand vermilion gates",
+   t:"Kyoto, at maximum colour",s:"Day trip · Kyoto",
+   tip:{h:"Start at 07:00",b:"Osaka to Kyoto is 29 min on the JR Special Rapid, ¥580 each way. Being at Fushimi Inari by 07:30 is the difference between an empty mountain of gates and a queue. This matters more in koyo season than any other time of year."},
+   baby:"The hardest day of the trip. Kyoto in late November is genuinely overwhelmed, the Fushimi Inari path is stone steps, and Arashiyama's bamboo grove is a single-file crush by 10:00. Carrier, not stroller, all day. If it sounds like too much, swap this for Osaka Aquarium Kaiyukan — one of the best in the world and completely pram-friendly.",
+   stops:[
+    {t:"07:00",n:"JR Special Rapid to Kyoto",d:"29 minutes from Osaka Station. Runs every 15 min, no reservation needed.",p:580,m:"Osaka Station"},
+    {t:"07:40",n:"Fushimi Inari Taisha",d:"Ten thousand vermilion torii up a wooded mountain. Free, open 24h. Go 20 minutes up and most people vanish.",p:0,
+     u:"https://inari.jp/en/",m:"Fushimi Inari Taisha"},
+    {t:"10:30",n:"Kiyomizu-dera",d:"Wooden stage on 13m pillars over a maple valley — the single best koyo view in Kyoto, and it peaks in your window.",p:500,
+     u:"https://www.kiyomizudera.or.jp/en/",m:"Kiyomizu-dera"},
+    {t:"12:30",n:"Ninenzaka & Sannenzaka",d:"Preserved stone-stepped lanes down from the temple. Machiya teahouses, and the best street food in Kyoto.",p:1500,m:"Ninenzaka Kyoto"},
+    {t:"15:00",n:"Arashiyama bamboo grove",d:"20 min west by train. The grove is 5 minutes of walking and worth it; Tenryu-ji's garden next door is worth more.",p:500,
+     u:"https://www.tenryuji.com/en/",m:"Arashiyama Bamboo Grove"},
+    {t:"18:30",n:"Back to Osaka",d:"About 50 minutes from Arashiyama. Eat in Osaka — it's better and cheaper.",p:640,m:"Saga-Arashiyama Station"}
+   ]},
+  {n:8,city:"kansai",line:"kintetsu",illo:"nara",cap:"Nara · sika deer and the Todai-ji roofline",
+   t:"Deer, and the biggest bronze Buddha",s:"Day trip · Nara",
+   tip:{h:"Buy crackers last",b:"Shika senbei are ¥200 a bundle. The moment you hold one you are surrounded — buy them after you've walked into the park, not at the entrance, and hold them above your head to make the deer bow."},
+   baby:"Mixed. The deer are semi-wild, pushy about food, and roughly toddler-height — brilliant from a carrier or your arms, alarming at eye level in a stroller. Todai-ji's hall is flat and vast. Nara Park is grass and gravel; a stroller works but you'll carry it up steps. Half-day option: back in Osaka by 15:00 for a nap.",
+   stops:[
+    {t:"08:30",n:"Kintetsu Nara Line from Namba",d:"39 min direct, ¥680 each way. Faster and closer to the park than the JR route.",p:680,m:"Osaka Namba Station"},
+    {t:"09:30",n:"Nara Park",d:"1,200 free-roaming sika deer, protected as messengers of the gods since the 8th century. They bow for crackers.",p:200,m:"Nara Park"},
+    {t:"10:30",n:"Todai-ji",d:"The world's largest bronze Buddha, 15m, in one of the world's largest wooden buildings. The scale does not photograph.",p:800,
+     u:"https://www.todaiji.or.jp/en/",m:"Todai-ji"},
+    {t:"12:30",n:"Kasuga Taisha",d:"3,000 stone and bronze lanterns through a deer-grazed forest. The approach is better than the shrine.",p:500,
+     u:"https://www.kasugataisha.or.jp/",m:"Kasuga Taisha"},
+    {t:"14:30",n:"Naramachi",d:"Old merchant quarter, lattice-fronted townhouses, quiet after the park. Kakinoha-zushi wrapped in persimmon leaf.",p:1500,m:"Naramachi Nara"},
+    {t:"16:30",n:"Back to Osaka",d:"39 min. Home before the evening crush.",p:680,m:"Kintetsu Nara Station"}
+   ]},
+  {n:9,city:"kansai",line:"midosuji",illo:"castle",cap:"Osaka Castle · the tenshu on its Toyotomi stone base",
+   t:"Castle, market, tower, sunset",s:"Osaka · Castle to Umeda",
+   tip:{h:"Osaka in one line",b:"Everything today is on the Midosuji line, red, the city's spine. A one-day subway pass is ¥820 and pays for itself by the third hop."},
+   baby:"The easiest full day of the trip. The castle park is enormous, flat and pram-perfect, with the maples peaking. Kuromon is covered — good if it rains. Umeda Sky's escalator through open air is genuinely alarming with a baby; there's a lift, ask for it.",
+   stops:[
+    {t:"09:00",n:"Osaka Castle",d:"Rebuilt tenshu on the original Toyotomi stone base, in a park of 600 cherry and maple trees. Adults ¥600 — free under 15, so the baby is free anyway.",p:600,
+     u:"https://www.osakacastle.net/english/",m:"Osaka Castle"},
+    {t:"11:30",n:"Kuromon Ichiba Market",d:"600m covered market, Osaka's kitchen for 200 years. Grilled scallops, tuna, wagyu skewers, fruit. Graze standing.",p:3000,
+     u:"https://kuromon.com/en/",m:"Kuromon Ichiba Market"},
+    {t:"14:00",n:"Shinsekai & Tsutenkaku",d:"A 1912 vision of the future that time forgot — the tower was modelled on the Eiffel, the neighbourhood on Coney Island. Cheerfully seedy.",p:1000,
+     u:"https://www.tsutenkaku.co.jp/",m:"Tsutenkaku Tower"},
+    {t:"15:30",n:"Kushikatsu Daruma",d:"Deep-fried skewers, one communal sauce pot, and one rule enforced everywhere in Osaka: no double-dipping.",p:2500,m:"Kushikatsu Daruma Shinsekai"},
+    {t:"17:00",n:"Umeda Sky Building",d:"Two towers joined by a floating observatory 173m up. Sunset lands about 16:45 in your window, so arrive before it.",p:2000,
+     u:"https://www.skybldg.co.jp/en/",m:"Umeda Sky Building"},
+    {t:"19:00",n:"Depachika at Hankyu Umeda",d:"The most extravagant food hall in Japan. Buy dinner, take it back to the room, collapse.",p:2500,m:"Hankyu Umeda depachika"}
+   ]},
+  {n:10,city:"kansai",line:"nankai",illo:"bay",cap:"Kansai International · Renzo Piano's terminal on its man-made island",
+   t:"One last market breakfast, then out",s:"Osaka → KIX",
+   tip:{h:"Leave time",b:"KIX is 50 min from Namba on the Nankai, or ~70 by Limousine Bus from the hotels. Be at the airport 3h before an international flight."},
+   baby:"Tokyo Station and KIX both have excellent baby rooms landside. Take the Limousine Bus over the Nankai if you still have the stroller up — hold luggage, one seat, no gates or stairs at either end. KIX's Terminal 1 is a single long hall, easy to walk a fractious baby in.",
+   stops:[
+    {t:"08:00",n:"Konbini breakfast, done properly",d:"Egg sando, hot canned coffee, karaage-kun. The most underrated meal in Japan.",p:600,m:"7-Eleven Osaka"},
+    {t:"09:30",n:"Shinsaibashi-suji arcade",d:"600m of covered shopping, opens 11:00 but the arcade is walkable earlier. Last-minute gifts without weather risk.",p:4000,m:"Shinsaibashi-suji Shopping Street"},
+    {t:"11:30",n:"551 Horai butaman",d:"Pork buns bought at the station and eaten warm — the Osaka souvenir everyone actually wants. Chilled packs travel.",p:800,m:"551 Horai Namba"},
+    {t:"12:30",n:"Limousine Bus or Nankai to KIX",d:"Bus ~¥1,800pp door to door, or the Nankai Rapi:t ¥1,490pp in 38 min from Namba.",p:1800,
+     u:"https://webservice.limousinebus.co.jp/web/en/",m:"Kansai International Airport"}
+   ]}
+  ];
+
+  // ---------- food ----------
+  const food = [
+   {c:"Tokyo · Ramen & tsukemen", w:"Days 1–5 · queue 10–40 min", note:"No reservations, no lingering. Buy a ticket at the vending machine, sit, eat in fifteen minutes, leave. Counter-only, so these are a solo errand.",
+    e:[
+     {n:"Fuunji",b:"¥",a:"Shinjuku",d:"The tsukemen benchmark — dip noodles into thick chicken-and-fish broth. Queue by 11:00 or after 20:00.",q:"Fuunji Shinjuku"},
+     {n:"Nakiryu",b:"¥",a:"Otsuka",d:"Michelin-starred tantanmen under ¥1,200. Sesame, chilli, numbing pepper. Worth the detour north.",q:"Nakiryu ramen Otsuka"},
+     {n:"AFURI",b:"¥",a:"Ebisu / Harajuku",d:"Yuzu-shio: light, citrus, charred chashu. The one for someone who says they don't like ramen.",u:"https://afuri.com/",q:"AFURI Ebisu"},
+     {n:"Ichiran",b:"¥",a:"Shibuya",d:"Tonkotsu in a solo booth with a bamboo screen. Touristy, genuinely good, open 24h.",u:"https://en.ichiran.com/",q:"Ichiran Shibuya"}
+    ]},
+   {c:"Tokyo · Sushi", w:"Days 4–5 · book the counters", note:"Lunch at a good counter costs a third of dinner for the same fish. Sit at the counter, take what the chef gives you, eat it with your hands.",
+    e:[
+     {n:"Daiwa Sushi",b:"¥¥¥",a:"Toyosu Market",d:"Omakase off the market floor at 07:00. Sushi Dai next door has a 3h queue; Daiwa is 90% as good in 30 min.",s:1,q:"Daiwa Sushi Toyosu Market"},
+     {n:"Kyubey",b:"¥¥¥",a:"Ginza",d:"The gateway to serious Ginza sushi — ¥8,000 lunch omakase, English menu, no intimidation.",u:"https://www.kyubey.jp/en/",q:"Kyubey Ginza"},
+     {n:"Uobei Genki Sushi",b:"¥",a:"Shibuya",d:"Touchscreen order, plates fired down a rail at ¥180 each. Absurd fun, decent fish, and fine with a baby.",q:"Uobei Shibuya"},
+     {n:"Sushi Saito",b:"¥¥¥¥",a:"Akasaka",d:"Three stars, ~¥40,000, effectively unbookable without a hotel concierge. Listed so you know why.",q:"Sushi Saito Tokyo"}
+    ]},
+   {c:"Tokyo · Fried, grilled, stewed", w:"Any Tokyo evening", note:"The single-dish specialists. Each does one thing and nothing else. Butagumi and Maisen both take a pram.",
+    e:[
+     {n:"Butagumi",b:"¥¥",a:"Nishi-Azabu",d:"Tonkatsu from forty named pork breeds — pick your pig off a list. Converted house, book ahead.",u:"https://butagumi.com/",q:"Butagumi Nishiazabu"},
+     {n:"Tonkatsu Maisen",b:"¥¥",a:"Omotesando",d:"In an old bathhouse. Order the kurobuta loin; the ¥1,000 sando counter by the door is a great cheap lunch.",q:"Maisen Aoyama"},
+     {n:"Tempura Tsunahachi",b:"¥¥",a:"Shinjuku",d:"Since 1923. Counter seats so each piece lands in front of you straight out of the oil.",q:"Tsunahachi Shinjuku"},
+     {n:"Obana",b:"¥¥¥",a:"Minami-Senju",d:"Unagi grilled over binchotan for a century. Lunch only, cash only, closes when the eel runs out.",q:"Obana unagi Minami-Senju"},
+     {n:"Bird Land",b:"¥¥¥",a:"Ginza",d:"Michelin yakitori in a basement. Every part of the bird, charcoal, no sauce hiding anything.",q:"Bird Land Ginza"}
+    ]},
+   {c:"Osaka · Kuidaore", w:"Days 6–10 · the reason to come", note:"Osaka's word for eating yourself into ruin. Cheaper, louder and far more relaxed about a baby than anywhere in Tokyo.",
+    e:[
+     {n:"Mizuno",b:"¥¥",a:"Dotonbori",d:"Michelin Bib okonomiyaki, one narrow room, yamaimo batter that comes out closer to a soufflé. 30 min queue.",s:1,q:"Mizuno Okonomiyaki Dotonbori"},
+     {n:"Chibo",b:"¥¥",a:"Dotonbori",d:"The tourist-friendly alternative with tables, high chairs and a canal view. Genuinely good, no queue drama.",u:"https://chibo.com/",q:"Chibo Dotonbori"},
+     {n:"Kushikatsu Daruma",b:"¥¥",a:"Shinsekai",d:"Deep-fried skewers, communal sauce, one rule: no double-dipping. The Shinsekai original is the one.",u:"https://kushikatu-daruma.com/",q:"Kushikatsu Daruma Shinsekai"},
+     {n:"Wanaka Takoyaki",b:"¥",a:"Namba",d:"Eight molten octopus balls for ¥600. Let them sit 90 seconds or you will burn your mouth. Everyone does anyway.",q:"Wanaka Takoyaki Sennichimae"},
+     {n:"Harijuu",b:"¥¥¥",a:"Namba",d:"Sukiyaki in a 1900s wooden merchant house, cooked at your table by staff in kimono. The Osaka splurge.",q:"Harijuu Namba"},
+     {n:"Tsuruhashi Korea Town",b:"¥¥",a:"Tsuruhashi",d:"Japan's biggest Korean quarter — yakiniku grills, kimchi stalls, smoke in the arcade. Two stops from Namba.",q:"Tsuruhashi Korea Town Osaka"}
+    ]},
+   {c:"Kansai · Kyoto & Nara", w:"Days 7–8", note:"Different food culture entirely: refined, vegetable-forward, quieter. Kyoto's temple cuisine is the oldest vegan tradition on the planet.",
+    e:[
+     {n:"Nishiki Market",b:"¥",a:"Kyoto",d:"400m covered market, 'Kyoto's kitchen'. Tsukemono pickles, tamagoyaki, soy-milk doughnuts. Busy by 11:00.",q:"Nishiki Market Kyoto"},
+     {n:"Omen",b:"¥¥",a:"Kyoto · Ginkaku-ji",d:"Handmade udon in a farmhouse room, with a plate of sesame and vegetables to add yourself. Tables, welcoming.",q:"Omen Ginkakuji Kyoto"},
+     {n:"Shigetsu",b:"¥¥¥",a:"Kyoto · Arashiyama",d:"Shojin ryori inside Tenryu-ji itself. Buddhist temple cuisine, entirely vegan, served in the garden's own hall.",u:"https://www.tenryuji.com/en/shigetsu/",q:"Shigetsu Tenryuji"},
+     {n:"Nakatanidou",b:"¥",a:"Nara",d:"Mochi pounded at terrifying speed to a crowd — check their schedule for pounding times. ¥200 for the yomogi mochi.",q:"Nakatanidou Nara"}
+    ]},
+   {c:"Cheap, loud, family-proof", w:"Both cities", note:"Where the itinerary's evenings actually land, plus the chains that will save you when nobody can face another decision.",
+    e:[
+     {n:"Omoide Yokocho",b:"¥¥",a:"Tokyo · Shinjuku",d:"Yakitori alleys under the JR tracks. Smoke, eight seats a shop, no English needed. Not for the baby.",q:"Omoide Yokocho Shinjuku"},
+     {n:"Andy's Shin Hinomoto",b:"¥¥",a:"Tokyo · Yurakucho",d:"Izakaya under the train tracks run by a British fishmonger. Market-fresh sashimi, cheap, tables.",q:"Andys Shin Hinomoto Yurakucho"},
+     {n:"Hozenji Yokocho",b:"¥¥",a:"Osaka · Namba",d:"Stone-paved lane of tiny counters behind the Dotonbori noise. Atmosphere Tokyo can't fake.",q:"Hozenji Yokocho Osaka"},
+     {n:"Saizeriya / Gusto",b:"¥",a:"Everywhere",d:"Family restaurants: high chairs, kids menus, ¥500 pasta, drink bar. Unglamorous and a genuine relief on day 8.",q:"Saizeriya Osaka"},
+     {n:"Depachika",b:"¥–¥¥",a:"Both cities",d:"Hankyu Umeda and Mitsukoshi Ginza. Restaurant-grade food at half price after 19:30, eaten in the hotel room.",q:"Hankyu Umeda depachika"}
+    ]},
+   {c:"The splurge", w:"Book 1–3 months out", note:"If you want one meal that justifies the flights. All take online or concierge reservations, none take a baby happily — get a sitter or go in shifts.",
+    e:[
+     {n:"Den",b:"¥¥¥¥",a:"Tokyo · Jingumae",d:"World's-50-Best kaiseki with a sense of humour — the fried chicken arrives in a takeaway box. ~¥30,000.",u:"https://www.jimbochoden.com/",s:1,q:"Den Tokyo restaurant Jingumae"},
+     {n:"Narisawa",b:"¥¥¥¥",a:"Tokyo · Minami-Aoyama",d:"'Satoyama' cuisine — bread that proves at the table, broths built from forest ingredients. ~¥40,000.",u:"https://www.narisawa-yoshihiro.com/",q:"Narisawa Tokyo"},
+     {n:"Hajime",b:"¥¥¥¥",a:"Osaka · Shinmachi",d:"Three stars, a dining room like a laboratory, and a signature course built around the natural world. ~¥40,000.",q:"Hajime Osaka"},
+     {n:"Kani Doraku",b:"¥¥¥",a:"Osaka · Dotonbori",d:"Under the giant mechanical crab. More landmark than restaurant, but the crab kaiseki is properly good.",q:"Kani Doraku Dotonbori"}
+    ]},
+   {c:"Coffee & vegetarian", w:"Every morning", note:"Japan's coffee scene is world-class. Vegetarian is harder than it should be — dashi hides in nearly everything — so these are the reliable ones.",
+    e:[
+     {n:"Fuglen Tokyo",b:"¥",a:"Tokyo · Tomigaya",d:"Oslo roasters in a mid-century room near Yoyogi Park. Coffee by day, cocktails at night.",u:"https://fuglen.com/",q:"Fuglen Tokyo Tomigaya"},
+     {n:"Mel Coffee Roasters",b:"¥",a:"Osaka · Yotsubashi",d:"The best roaster in Osaka, in a shopfront the size of a corridor. Standing room, serious beans.",q:"Mel Coffee Roasters Osaka"},
+     {n:"T's TanTan",b:"¥",a:"Tokyo Station",d:"All-vegan ramen inside the ticket gates. Fast, cheap, the golden sesame bowl is excellent.",u:"https://ts-restaurant.jp/",q:"T's TanTan Tokyo Station"},
+     {n:"Ain Soph. Journey",b:"¥¥",a:"Tokyo · Shinjuku",d:"Vegan pancakes and set meals in a calm room. Book if someone in the group is strict.",u:"https://www.ain-soph.jp/",q:"Ain Soph Journey Shinjuku"},
+     {n:"7-Eleven / Lawson",b:"¥",a:"Everywhere",d:"Egg sando, onigiri, hot canned coffee. Under ¥600 and better than it has any right to be.",q:"7-Eleven Tokyo"}
+    ]}
+  ];
+
+  // ---------- weather: Tokyo 1991–2020 JMA normals ----------
+  const wx = [
+   {m:"Jan",lo:2,hi:10,r:60,n:"Coldest and clearest. Best Fuji visibility of the year.",p:0},
+   {m:"Feb",lo:2,hi:11,r:57,n:"Still cold, plum blossom from mid-month.",p:0},
+   {m:"Mar",lo:5,hi:14,r:116,n:"Sakura opens ~25 Mar. Crowds and prices climb.",p:0},
+   {m:"Apr",lo:10,hi:20,r:134,n:"Superb weather. Golden Week chaos from 29 Apr.",p:0},
+   {m:"May",lo:15,hi:25,r:140,n:"Warm, green, comfortable. Book early.",p:0},
+   {m:"Jun",lo:19,hi:27,r:168,n:"Tsuyu rainy season. Humid, hydrangeas, fewer tourists.",p:0},
+   {m:"Jul",lo:23,hi:31,r:156,n:"Hot and heavy. Fireworks and matsuri season.",p:0},
+   {m:"Aug",lo:25,hi:33,r:155,n:"Peak heat, 35°C days. Rough with an infant.",p:0},
+   {m:"Sep",lo:22,hi:29,r:225,n:"Typhoon peak and still humid. Buy flexible fares.",p:0},
+   {m:"Oct",lo:16,hi:23,r:235,n:"Turns superb after mid-month. Rain in bursts.",p:0},
+   {m:"Nov",lo:9,hi:18,r:96,n:"Your window opens. Leaves peak ~20 Nov, low rain, cold evenings.",p:1},
+   {m:"Dec",lo:4,hi:13,r:58,n:"Your window closes. Driest month, clearest Fuji, illuminations citywide.",p:1}
+  ];
+
+  // ---------- hotels: five Tokyo nights + four Osaka nights ----------
+  const tiers = {
+    budget:{label:"Budget", tokyo:22000, osaka:19000,
+      blurb:"Apartment-style rooms with a kitchenette — you can sterilise bottles, reheat baby food, and not eat out three times a day.",
+      hotels:[
+        {n:"MIMARU Tokyo Shinjuku West",m:"Nights 1–5 · Apartment rooms, free cot, microwave & sink",u:"https://mimaruhotels.com/en/",q:"MIMARU Tokyo Shinjuku West"},
+        {n:"MIMARU Osaka Shinsaibashi West",m:"Nights 6–9 · Same chain, 8 min walk to Dotonbori",u:"https://mimaruhotels.com/en/",q:"MIMARU Osaka Shinsaibashi West"},
+        {n:"Tokyu Stay Shinjuku",m:"Alt · Washer-dryer in every room — the real luxury with a baby",u:"https://www.tokyustay.co.jp/e/",q:"Tokyu Stay Shinjuku"}
+      ]},
+    mid:{label:"Mid", tokyo:38000, osaka:31000,
+      blurb:"Proper family rooms, cots on request, a lobby you can park a stroller in. Late November is high season in both cities — book by August.",
+      hotels:[
+        {n:"Shibuya Stream Excel Hotel Tokyu",m:"Nights 1–5 · Over Shibuya Stn · lift-only access, no stairs",u:"https://www.tokyuhotels.co.jp/shibuya-stream-e/",q:"Shibuya Stream Excel Hotel Tokyu"},
+        {n:"Cross Hotel Osaka",m:"Nights 6–9 · 3 min to Dotonbori, family rooms, big bathrooms",u:"https://www.crosshotel.com/osaka/",q:"Cross Hotel Osaka"},
+        {n:"Hotel Granvia Osaka",m:"Alt · Directly above Osaka Station — zero walking with luggage",u:"https://www.granvia-osaka.jp/en/",s:1,q:"Hotel Granvia Osaka"}
+      ]},
+    luxe:{label:"Luxe", tokyo:140000, osaka:95000,
+      blurb:"Book six months out. Note the swap from the usual suspects: Aman and HOSHINOYA are stunning and not built for infants — these are.",
+      hotels:[
+        {n:"Park Hyatt Tokyo",m:"Nights 1–5 · Shinjuku · Cots, sitters on request, huge rooms",u:"https://www.hyatt.com/park-hyatt/tyoph-park-hyatt-tokyo",q:"Park Hyatt Tokyo"},
+        {n:"Conrad Osaka",m:"Nights 6–9 · 40th-floor lobby, pool, proper family service",u:"https://www.hilton.com/en/hotels/osacici-conrad-osaka/",q:"Conrad Osaka"},
+        {n:"Grand Hyatt Tokyo",m:"Alt · Roppongi · The most family-equipped 5-star in Tokyo",u:"https://www.hyatt.com/grand-hyatt/tyogh-grand-hyatt-tokyo",s:1,q:"Grand Hyatt Tokyo"}
+      ]}
+  };
+
+  // ---------- render days ----------
+  const rail = document.getElementById("rail");
+  const dayCost = d => d.stops.reduce((a,s)=>a+(s.p||0),0);
+  const CITY = {tokyo:"Tokyo", kansai:"Kansai"};
+
+  rail.innerHTML = days.map(d=>{
+    const ln = L[d.line];
+    const stops = d.stops.map(s=>`
+      <div class="stop">
+        <div class="t">${s.t}</div>
+        <div>
+          <div class="sname">${s.n}</div>
+          <div class="sdesc">${s.d}</div>
+          <div class="links">
+            ${s.u?`<a href="${s.u}" target="_blank" rel="noopener">Official site ↗</a>`:""}
+            ${s.m?`<a href="${map(s.m)}" target="_blank" rel="noopener">Map ↗</a>`:""}
+          </div>
+        </div>
+        <div class="price ${s.p?"":"free"}">${s.pl?s.pl:(s.p?yen(s.p*2):"free")}
+          ${s.p?`<div class="kidflag">×2 adults · <i>baby free</i></div>`:""}</div>
+      </div>`).join("");
+    return `<details class="day" data-loc="${d.city}">
+      <span class="dot" style="--dotc:${ln.c}"></span>
+      <summary class="dhead">
+        <span class="dnum">DAY ${String(d.n).padStart(2,"0")}</span>
+        <span class="dtitle">${d.t}<span>${d.s}</span></span>
+        <span class="dcost">${yen(dayCost(d)*2)} <span style="color:var(--tx-3)">/ 3</span></span>
+        <span class="chev">▸</span>
+      </summary>
+      <div class="dbody" style="padding-left:0;padding-right:0">
+        ${ILLO[d.illo]}
+        <div class="illoCap">
+          <span class="lineTag" style="background:${ln.c}">${ln.n}</span>
+          <span class="cityTag">${CITY[d.city]}</span>
+        </div>
+        <div style="padding:0 20px">
+          <div class="cap" style="font-family:var(--f-data);font-size:10.5px;letter-spacing:.09em;
+            text-transform:uppercase;color:var(--tx-3);margin:10px 0 2px">${d.cap}</div>
+          ${stops}
+          <div class="tip"><b>${d.tip.h}</b>${d.tip.b}</div>
+          <div class="tip baby"><b>With the baby</b>${d.baby}</div>
+        </div>
+      </div>
+    </details>`;
+  }).join("");
+
+  // ---------- transfer section banner ----------
+  document.getElementById("transferIllo").innerHTML = ILLO.dotonbori +
+    `<div style="padding:9px 16px;font-family:var(--f-data);font-size:10.5px;letter-spacing:.09em;
+      text-transform:uppercase;color:var(--tx-3);background:var(--surface)">
+      Dotonbori after dark · what you arrive to on day 6</div>`;
+
+  // ---------- render food ----------
+  document.getElementById("food").innerHTML = food.map(c=>`
+    <div class="fcat">
+      <h3>${c.c} <span>${c.w}</span></h3>
+      <p>${c.note}</p>
+      <div class="eats">${c.e.map(e=>`
+        <div class="eat ${e.s?"star":""}">
+          <div class="eatTop"><span class="sname">${e.n}</span><span class="band">${e.b}</span></div>
+          <div class="where">${e.a}</div>
+          <div class="sdesc">${e.d}</div>
+          ${e.s?`<div class="flag">Worth planning a day around</div>`:""}
+          <div class="links">
+            ${e.u?`<a href="${e.u}" target="_blank" rel="noopener">Site ↗</a>`:""}
+            <a href="${map(e.q)}" target="_blank" rel="noopener">Map ↗</a>
+          </div>
+        </div>`).join("")}</div>
+    </div>`).join("");
+
+  // ---------- render weather ----------
+  const TMIN=0, TMAX=35, RMAX=240;
+  const pct = t => ((t-TMIN)/(TMAX-TMIN))*100;
+  document.getElementById("wx").innerHTML =
+    `<div class="wxrow head"><div>Month</div><div>Avg low → high</div><div>°C</div>
+     <div>Rainfall</div><div>What it means</div></div>` +
+    wx.map(w=>{
+      const l=pct(w.lo), r=pct(w.hi);
+      const warm = w.hi>=28 ? "#D9663B" : w.hi>=20 ? "#E0A53F" : w.hi>=13 ? "#5DA98A" : "#5C8FC4";
+      return `<div class="wxrow ${w.p?"peak":""}">
+        <div class="mo">${w.m}</div>
+        <div class="track"><div class="tband" style="left:${l}%;width:${r-l}%;background:${warm}"></div></div>
+        <div class="tlab">${w.lo}–${w.hi}°</div>
+        <div class="rain"><div class="rbar" style="width:${(w.r/RMAX)*88}px"></div>
+          <span class="rmm">${w.r} mm</span></div>
+        <div class="wxnote">${w.n}</div>
+      </div>`;
+    }).join("");
+
+  // ---------- render hotels ----------
+  const hbox = document.getElementById("hotels");
+  const drawHotels = t => {
+    hbox.innerHTML = Object.entries(tiers).map(([k,v])=>`
+      <div class="htier ${k===t?"on":""}">
+        <div>
+          <h3>${v.label}</h3>
+          <div class="hrate">${yen(v.tokyo)} <span style="color:var(--tx-3)">/</span> ${yen(v.osaka)}
+            <small>Tokyo / Osaka · per night, room of 3</small>
+            <small style="margin-top:4px">9 nights total ${yen(v.tokyo*5+v.osaka*4)} · ${usd(v.tokyo*5+v.osaka*4)}</small></div>
+        </div>
+        <p style="margin:0;color:var(--tx-2);font-size:14.5px">${v.blurb}</p>
+        ${v.hotels.map(h=>`<div class="hotel">
+          <div class="sname">${h.n}</div>
+          <div class="hmeta">${h.m}</div>
+          ${h.s?`<div class="kidflag"><i>Best equipped for infants</i></div>`:""}
+          <div class="links">
+            <a href="${h.u}" target="_blank" rel="noopener">Hotel site ↗</a>
+            <a href="${map(h.q)}" target="_blank" rel="noopener">Map ↗</a>
+          </div></div>`).join("")}
+      </div>`).join("");
+  };
+
+  // ---------- budget ----------
+  const activities = days.reduce((a,d)=>a+dayCost(d),0);
+  const tbody = document.querySelector("#budget tbody");
+  let tier = "mid";
+
+  function draw(){
+    const t = tiers[tier];
+    const lodging  = t.tokyo*5 + t.osaka*4;   // whole room, infant sleeps free
+    const sights   = activities*2;            // itemised stops (incl. the shinkansen), 2 adults
+    const transit  = 7200*2;                  // Suica across both cities, 9 days; under-6s free
+    const airport  = 6200;                    // Limousine Bus in at HND, out at KIX, 2 adults
+    const meals    = 42000*2;                 // breakfasts, coffee, drinks beyond the itemised stops
+    const babyKit  = 12000;                   // nappies, wipes, formula bought locally
+    const babyTaxi = 15000;                   // ~10 short taxi hops to dodge stair-only stations
+    const rows = [
+      ["Lodging","5 nights Tokyo + 4 Osaka, "+t.label.toLowerCase()+" tier · whole room, infant free",lodging],
+      ["Sights, food & day trips","Everything itemised above × 2 adults · includes the ¥15,490pp Nozomi",sights],
+      ["Local transit","Suica in both cities, ~¥800/day × 2 · under-6s ride free on laps",transit],
+      ["Airport transfers","Limousine Bus into Haneda, out of Kansai — no stairs either end",airport],
+      ["Unlisted meals","Breakfasts, coffee, drinks × 2 · one splurge dinner adds ¥60,000",meals],
+      ["Baby supplies","Nappies, wipes, formula — cheap and sold everywhere in Japan",babyKit],
+      ["Taxi budget","To skip stair-only stations at nap time. The line you will thank yourself for",babyTaxi]
+    ];
+    const buffer = Math.round(rows.reduce((a,r)=>a+r[2],0)*0.08);
+    rows.push(["Buffer","8% for the thing you didn't plan for",buffer]);
+    const total = rows.reduce((a,r)=>a+r[2],0);
+    tbody.innerHTML = rows.map(r=>
+      `<tr><td>${r[0]}</td><td style="color:var(--tx-2)">${r[1]}</td>
+       <td class="n">${yen(r[2])}</td><td class="n" style="color:var(--tx-2)">${usd(r[2])}</td></tr>`
+    ).join("") + `<tr class="sum"><td>Trip total</td><td>2 adults + 1 infant · excludes international flights</td>
+       <td class="n">${yen(total)}</td><td class="n">${usd(total)}</td></tr>
+      <tr><td style="color:var(--tx-2)">Per adult</td>
+       <td style="color:var(--tx-2)">Total ÷ 2 — the baby accounts for about ${yen(babyKit+babyTaxi)} of it</td>
+       <td class="n" style="color:var(--tx-2)">${yen(Math.round(total/2))}</td>
+       <td class="n" style="color:var(--tx-2)">${usd(Math.round(total/2))}</td></tr>`;
+    document.getElementById("grand").textContent = yen(total);
+    document.getElementById("grandUsd").textContent = "· " + usd(total);
+    drawHotels(tier);
+  }
+
+  document.querySelectorAll("[data-tier]").forEach(b=>{
+    b.addEventListener("click",()=>{
+      tier = b.dataset.tier;
+      document.querySelectorAll("[data-tier]").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));
+      draw();
+    });
+  });
+
+  const cityBtns = document.querySelectorAll(".bar [data-city]");
+  cityBtns.forEach(b=>{
+    b.addEventListener("click",()=>{
+      const c = b.dataset.city;
+      cityBtns.forEach(x=>x.setAttribute("aria-pressed",String(x===b)));
+      document.querySelectorAll(".day").forEach(d=>{
+        d.classList.toggle("hide", c!=="all" && d.dataset.loc!==c);
+      });
+    });
+  });
+
+  draw();
+})();
+</script>
+
+<button id="themeToggle" type="button" aria-label="Switch between light and dark theme">◐</button>
+<script>
+(function(){
+  var root = document.documentElement, btn = document.getElementById('themeToggle');
+  var saved = null;
+  try { saved = localStorage.getItem('theme'); } catch (e) {}
+  if (saved) root.setAttribute('data-theme', saved);
+  btn.addEventListener('click', function(){
+    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var current = root.getAttribute('data-theme') || (prefersDark ? 'dark' : 'light');
+    var next = current === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>

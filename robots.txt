@@ -1,0 +1,3 @@
+# Unlisted by design: reachable by link, not through search.
+User-agent: *
+Disallow: /

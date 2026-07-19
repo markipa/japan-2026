@@ -1,0 +1,8 @@
+# Editor / OS noise
+.DS_Store
+Thumbs.db
+*.tmp
+*.backup.html
+
+# Superseded Tokyo-only draft, kept locally
+tokyo-10-day.html
