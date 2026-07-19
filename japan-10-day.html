@@ -175,9 +175,20 @@
   .hrate{font-family:var(--f-data);font-size:22px;font-weight:600;letter-spacing:-.02em}
   .hrate small{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
     color:var(--tx-3);font-weight:400;margin-top:2px}
-  .hotel{border-top:1px solid var(--line);padding-top:12px}
-  .hotel .sname{font-size:15px}
+  .hcity{margin-top:4px}
+  .hcityHead{font-family:var(--f-data);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--tx-3);padding:10px 0 2px;border-top:1px solid var(--line)}
+  .hotel{padding:11px 0 2px;border-top:1px dashed var(--line)}
+  .hcity .hotel:first-of-type{border-top:0}
+  .hotel.ispick{border-left:2px solid var(--accent-ink);padding-left:10px;margin-left:-12px}
+  .hotelTop{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+  .hotel .sname{font-size:15px;line-height:1.3}
+  .hprice{font-family:var(--f-data);font-size:14px;font-weight:600;white-space:nowrap;
+    font-variant-numeric:tabular-nums}
+  .hprice i{font-style:normal;font-size:10px;color:var(--tx-3);font-weight:400}
   .hmeta{font-family:var(--f-data);font-size:11.5px;color:var(--tx-3);margin-top:2px}
+  .hkit{font-family:var(--f-data);font-size:10.5px;letter-spacing:.03em;color:var(--baby);margin-top:3px}
+  .tick{color:var(--accent);font-weight:700}
 
   /* ---------- tables ---------- */
   .scroll{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
@@ -334,8 +345,37 @@
     <p class="lede">Rates are for the <b>whole room, three occupants</b>. Japanese hotels price per
       person and enforce occupancy strictly — a standard double will not let you add an infant, so you
       need a triple, a family room, or an apartment. Say <em>akachan</em> (infant) and the age when
-      booking; cots are usually free but limited, so request at reservation, not arrival.</p>
+      booking; cots are usually free but limited, so request at reservation, not arrival.
+      Eighteen properties below — six per tier, split across the two cities, each with its own nightly
+      rate. The two marked <span class="tick">✓</span> are what the budget calculator prices; swap in
+      any other and the difference is the rate gap times the nights.</p>
     <div class="hotels" id="hotels"></div>
+
+    <h3 style="font-size:18px;margin:34px 0 4px">All eighteen, cheapest first</h3>
+    <p class="lede" style="margin-bottom:14px">Nightly rate is the whole room for three. The stay
+      column is that rate across the nights you'd actually be in that city — five in Tokyo, four in
+      Osaka. A tick marks the two the budget calculator prices.</p>
+    <div class="scroll"><table id="hotelTable"><thead><tr>
+      <th>Hotel</th><th>City</th><th>Tier</th><th>Room</th><th>Family kit</th>
+      <th style="text-align:right">Per night</th><th style="text-align:right">Stay</th>
+    </tr></thead><tbody></tbody></table></div>
+
+    <div class="notes" style="margin-top:20px">
+      <div class="note"><h3>What actually drives the price</h3><p>Occupancy, not luxury. A third
+        person pushes you out of every standard double in Japan and into a triple, a family room or an
+        apartment — a jump of ¥6,000–10,000 a night before you've upgraded anything. Budget-tier
+        apartments cost more than a business single for exactly this reason.</p></div>
+      <div class="note"><h3>Say it at booking, not arrival</h3><p>State the infant and the age when
+        you reserve. Cots are usually free but each hotel holds only a handful, and a room booked for
+        two adults can be refused at check-in with a third person present. Japanese hotels enforce
+        this strictly.</p></div>
+      <div class="note"><h3>The laundry argument</h3><p>Tokyu Stay puts a washer-dryer in the room and
+        MIMARU gives you a kitchen. With a baby that changes what you pack and what you spend on food —
+        arguably worth more than a tier upgrade.</p></div>
+      <div class="note"><h3>Book by August</h3><p>These are late-November rates, which is peak
+        domestic season for autumn colour. The same rooms in January cost 30–40% less; booked late in
+        October they cost 30% more, if they're available at all.</p></div>
+    </div>
   </section>
 
   <section id="weather">
@@ -882,30 +922,107 @@
    {m:"Dec",lo:4,hi:13,r:58,n:"Your window closes. Driest month, clearest Fuji, illuminations citywide.",p:1}
   ];
 
-  // ---------- hotels: five Tokyo nights + four Osaka nights ----------
+  // ---------- hotels ----------
+  // Rates are per night for the whole room, three occupants, late-Nov 2026 high season.
+  // "pick" marks the property the budget prices; rateFor() below derives the tier rate from
+  // the picks, so the cards, the table and the totals cannot drift apart.
   const tiers = {
-    budget:{label:"Budget", tokyo:22000, osaka:19000,
-      blurb:"Apartment-style rooms with a kitchenette — you can sterilise bottles, reheat baby food, and not eat out three times a day.",
+    budget:{label:"Budget",
+      blurb:"Apartment-style rooms with a kitchenette — sterilise bottles, reheat baby food, skip one restaurant meal a day. The single biggest saving available to you.",
       hotels:[
-        {n:"MIMARU Tokyo Shinjuku West",m:"Nights 1–5 · Apartment rooms, free cot, microwave & sink",u:"https://mimaruhotels.com/en/",q:"MIMARU Tokyo Shinjuku West"},
-        {n:"MIMARU Osaka Shinsaibashi West",m:"Nights 6–9 · Same chain, 8 min walk to Dotonbori",u:"https://mimaruhotels.com/en/",q:"MIMARU Osaka Shinsaibashi West"},
-        {n:"Tokyu Stay Shinjuku",m:"Alt · Washer-dryer in every room — the real luxury with a baby",u:"https://www.tokyustay.co.jp/e/",q:"Tokyu Stay Shinjuku"}
+        {n:"MIMARU Tokyo Shinjuku West",c:"tokyo",r:22000,pick:1,
+         room:"Apartment, sleeps 4",kit:"Free cot · kitchenette · microwave",walk:"6 min to Shinjuku Stn",
+         d:"Built for families and the reason this tier works at all. Bunk-and-double apartments with a sink you can actually wash bottles in.",
+         u:"https://mimaruhotels.com/en/",q:"MIMARU Tokyo Shinjuku West"},
+        {n:"Tokyu Stay Shinjuku",c:"tokyo",r:19000,
+         room:"Triple, 26m²",kit:"Washer-dryer in room",walk:"5 min to Shinjuku-sanchome",
+         d:"A washer-dryer in the room is not a luxury with a baby, it is the whole trip. Nine days out of one carry-on each.",
+         u:"https://www.tokyustay.co.jp/e/",q:"Tokyu Stay Shinjuku"},
+        {n:"Sotetsu Fresa Inn Tokyo Ginza",c:"tokyo",r:17000,
+         room:"Triple",kit:"Cot on request",walk:"4 min to Higashi-ginza",
+         d:"Plain, clean, extremely well placed for days 3 and 4. No frills whatsoever, and none needed.",
+         q:"Sotetsu Fresa Inn Tokyo Ginza Nanachome"},
+        {n:"MIMARU Osaka Shinsaibashi West",c:"osaka",r:19000,pick:1,
+         room:"Apartment, sleeps 4",kit:"Free cot · kitchenette · microwave",walk:"8 min to Dotonbori",
+         d:"Same chain, same layout, cheaper city. Walk to dinner on days 6 and 9 without touching a train.",
+         u:"https://mimaruhotels.com/en/",q:"MIMARU Osaka Shinsaibashi West"},
+        {n:"Tokyu Stay Osaka Namba",c:"osaka",r:17000,
+         room:"Triple",kit:"Washer-dryer in room",walk:"5 min to Namba Stn",
+         d:"The Osaka half of the laundry trick, and a short walk from the Nara train on day 8.",
+         u:"https://www.tokyustay.co.jp/e/",q:"Tokyu Stay Osaka Namba"},
+        {n:"Karaksa Hotel Osaka Namba",c:"osaka",r:15000,
+         room:"Family room, 4 beds",kit:"Coin laundry · microwave",walk:"7 min to Namba Stn",
+         d:"The cheapest genuinely family-sized room on this list. Basic, big, perfectly fine.",
+         q:"Karaksa Hotel Osaka Namba"}
       ]},
-    mid:{label:"Mid", tokyo:38000, osaka:31000,
-      blurb:"Proper family rooms, cots on request, a lobby you can park a stroller in. Late November is high season in both cities — book by August.",
+    mid:{label:"Mid",
+      blurb:"Proper family rooms, cots on request, a lobby you can park a stroller in. Late November is peak domestic season in both cities — book by August or these rates climb hard.",
       hotels:[
-        {n:"Shibuya Stream Excel Hotel Tokyu",m:"Nights 1–5 · Over Shibuya Stn · lift-only access, no stairs",u:"https://www.tokyuhotels.co.jp/shibuya-stream-e/",q:"Shibuya Stream Excel Hotel Tokyu"},
-        {n:"Cross Hotel Osaka",m:"Nights 6–9 · 3 min to Dotonbori, family rooms, big bathrooms",u:"https://www.crosshotel.com/osaka/",q:"Cross Hotel Osaka"},
-        {n:"Hotel Granvia Osaka",m:"Alt · Directly above Osaka Station — zero walking with luggage",u:"https://www.granvia-osaka.jp/en/",s:1,q:"Hotel Granvia Osaka"}
+        {n:"Shibuya Stream Excel Hotel Tokyu",c:"tokyo",r:38000,pick:1,
+         room:"Deluxe triple, 32m²",kit:"Free cot · bottle warmer",walk:"Above Shibuya Stn",
+         d:"Lift access from platform to room with no stairs anywhere — rarer in Tokyo than it should be, and worth paying for with a pram.",
+         u:"https://www.tokyuhotels.co.jp/shibuya-stream-e/",q:"Shibuya Stream Excel Hotel Tokyu"},
+        {n:"Keio Plaza Hotel Tokyo",c:"tokyo",r:36000,star:1,
+         room:"Family room, 40m²",kit:"Bed guards · bottle warmer · potty · stroller hire",walk:"5 min to Shinjuku Stn",
+         d:"Runs an actual infant package: cot, bed guards, step stool, bottle warmer, even a pram to borrow. Outdoor pool. The most baby-ready hotel at this price in Tokyo.",
+         u:"https://www.keioplaza.com/",q:"Keio Plaza Hotel Tokyo"},
+        {n:"Hotel Ryumeikan Ochanomizu",c:"tokyo",r:34000,
+         room:"Japanese-Western triple",kit:"Free cot · futon option",walk:"2 min to Ochanomizu Stn",
+         d:"Family-run, quiet, central. The futon option means the baby sleeps on the floor beside you rather than in a cot.",
+         u:"https://ryumeikan-tokyo.jp/ochanomizu/en/",q:"Hotel Ryumeikan Ochanomizu Honten"},
+        {n:"Cross Hotel Osaka",c:"osaka",r:31000,pick:1,
+         room:"Superior triple, 30m²",kit:"Free cot · deep bath",walk:"3 min to Dotonbori",
+         d:"The best-placed mid hotel in Osaka. Big bathrooms, which matters more than you expect when you are bathing a baby every night.",
+         u:"https://www.crosshotel.com/osaka/",q:"Cross Hotel Osaka"},
+        {n:"Hotel Granvia Osaka",c:"osaka",r:29000,star:1,
+         room:"Family twin, 33m²",kit:"Free cot · nursing room on site",walk:"Inside Osaka Stn",
+         d:"Literally above the station. On day 7 you are on the Kyoto train four minutes after leaving your room; on day 10 the airport bus leaves downstairs.",
+         u:"https://www.granvia-osaka.jp/en/",q:"Hotel Granvia Osaka"},
+        {n:"Swissôtel Nankai Osaka",c:"osaka",r:33000,
+         room:"Classic triple, 32m²",kit:"Free cot · pool",walk:"Above Namba Stn",
+         d:"Sits directly on top of the Nankai line to KIX — the easiest possible departure morning with luggage and a pram.",
+         u:"https://www.swissotel.com/hotels/nankai-osaka/",q:"Swissotel Nankai Osaka"}
       ]},
-    luxe:{label:"Luxe", tokyo:140000, osaka:95000,
-      blurb:"Book six months out. Note the swap from the usual suspects: Aman and HOSHINOYA are stunning and not built for infants — these are.",
+    luxe:{label:"Luxe",
+      blurb:"Book six months out for a high floor. Note the swap from the usual suspects: Aman and HOSHINOYA are extraordinary and not built for infants — everything here is.",
       hotels:[
-        {n:"Park Hyatt Tokyo",m:"Nights 1–5 · Shinjuku · Cots, sitters on request, huge rooms",u:"https://www.hyatt.com/park-hyatt/tyoph-park-hyatt-tokyo",q:"Park Hyatt Tokyo"},
-        {n:"Conrad Osaka",m:"Nights 6–9 · 40th-floor lobby, pool, proper family service",u:"https://www.hilton.com/en/hotels/osacici-conrad-osaka/",q:"Conrad Osaka"},
-        {n:"Grand Hyatt Tokyo",m:"Alt · Roppongi · The most family-equipped 5-star in Tokyo",u:"https://www.hyatt.com/grand-hyatt/tyogh-grand-hyatt-tokyo",s:1,q:"Grand Hyatt Tokyo"}
+        {n:"Park Hyatt Tokyo",c:"tokyo",r:140000,pick:1,
+         room:"Park Deluxe, 55m²",kit:"Cot · sitters on request",walk:"12 min to Shinjuku Stn",
+         d:"The Lost in Translation one. Enormous rooms by Tokyo standards, which is the actual luxury once a cot has to fit in them.",
+         u:"https://www.hyatt.com/park-hyatt/tyoph-park-hyatt-tokyo",q:"Park Hyatt Tokyo"},
+        {n:"Grand Hyatt Tokyo",c:"tokyo",r:110000,star:1,
+         room:"Grand triple, 50m²",kit:"Cot · kids amenities · pool · sitters",walk:"2 min to Roppongi Stn",
+         d:"The most family-equipped five-star in Tokyo, and ¥30,000 a night less than the Park Hyatt. If the baby is the priority, book this instead.",
+         u:"https://www.hyatt.com/grand-hyatt/tyogh-grand-hyatt-tokyo",q:"Grand Hyatt Tokyo"},
+        {n:"The Peninsula Tokyo",c:"tokyo",r:135000,
+         room:"Deluxe, 54m²",kit:"Cot · in-room bathing kit · pool",walk:"Above Hibiya Stn",
+         d:"Faces the Imperial Palace gardens. Famously good with small children, and the rooftop views over Ginza are the best in the bracket.",
+         u:"https://www.peninsula.com/en/tokyo",q:"The Peninsula Tokyo"},
+        {n:"Conrad Osaka",c:"osaka",r:95000,pick:1,
+         room:"Deluxe, 50m²",kit:"Cot · pool · kids amenities",walk:"3 min to Higobashi Stn",
+         d:"A 40th-floor sky lobby over the river. Genuinely warm with small children in a way Osaka luxury hotels are not always.",
+         u:"https://www.hilton.com/en/hotels/osacici-conrad-osaka/",q:"Conrad Osaka"},
+        {n:"The St. Regis Osaka",c:"osaka",r:90000,
+         room:"Deluxe, 45m²",kit:"Cot · butler service",walk:"Above Honmachi Stn",
+         d:"On Midosuji itself — the day-9 route runs past the door. Butler service turns out to be oddly practical when you are juggling a baby.",
+         u:"https://www.marriott.com/hotels/travel/osaxr-the-st-regis-osaka/",q:"The St Regis Osaka"},
+        {n:"Four Seasons Hotel Osaka",c:"osaka",r:120000,
+         room:"Deluxe, 52m²",kit:"Cot · kids amenities · onsen floor",walk:"5 min to Kitahama Stn",
+         d:"Opened 2024 and the newest luxury room in the city. Has a genuine ryokan floor if you want one tatami night without changing hotels.",
+         u:"https://www.fourseasons.com/osaka/",q:"Four Seasons Hotel Osaka"}
       ]}
   };
+
+  // Tier rate = the rate of the picked hotel in that city. Derived, never hardcoded, so the
+  // budget table can never disagree with the hotel cards.
+  const rateFor = (tierKey, city) => {
+    const p = tiers[tierKey].hotels.find(x => x.c === city && x.pick);
+    return p ? p.r : 0;
+  };
+  Object.keys(tiers).forEach(k => {
+    tiers[k].tokyo = rateFor(k, "tokyo");
+    tiers[k].osaka = rateFor(k, "osaka");
+  });
 
   // ---------- render days ----------
   const rail = document.getElementById("rail");
@@ -998,25 +1115,60 @@
 
   // ---------- render hotels ----------
   const hbox = document.getElementById("hotels");
+  const CITYNAME = {tokyo:"Tokyo", osaka:"Osaka"};
+
   const drawHotels = t => {
-    hbox.innerHTML = Object.entries(tiers).map(([k,v])=>`
-      <div class="htier ${k===t?"on":""}">
-        <div>
-          <h3>${v.label}</h3>
-          <div class="hrate">${yen(v.tokyo)} <span style="color:var(--tx-3)">/</span> ${yen(v.osaka)}
-            <small>Tokyo / Osaka · per night, room of 3</small>
-            <small style="margin-top:4px">9 nights total ${yen(v.tokyo*5+v.osaka*4)} · ${usd(v.tokyo*5+v.osaka*4)}</small></div>
-        </div>
-        <p style="margin:0;color:var(--tx-2);font-size:14.5px">${v.blurb}</p>
-        ${v.hotels.map(h=>`<div class="hotel">
-          <div class="sname">${h.n}</div>
-          <div class="hmeta">${h.m}</div>
-          ${h.s?`<div class="kidflag"><i>Best equipped for infants</i></div>`:""}
-          <div class="links">
-            <a href="${h.u}" target="_blank" rel="noopener">Hotel site ↗</a>
-            <a href="${map(h.q)}" target="_blank" rel="noopener">Map ↗</a>
-          </div></div>`).join("")}
-      </div>`).join("");
+    hbox.innerHTML = Object.entries(tiers).map(([k,v])=>{
+      const cityBlock = city => {
+        const list = v.hotels.filter(x=>x.c===city);
+        return `
+          <div class="hcity">
+            <div class="hcityHead">${CITYNAME[city]} · ${city==="tokyo"?"nights 1–5":"nights 6–9"}</div>
+            ${list.map(x=>`
+              <div class="hotel ${x.pick?"ispick":""}">
+                <div class="hotelTop">
+                  <span class="sname">${x.n}</span>
+                  <span class="hprice">${yen(x.r)}<i>/night</i></span>
+                </div>
+                <div class="hmeta">${x.room} · ${x.walk}</div>
+                <div class="hkit">${x.kit}</div>
+                <div class="sdesc" style="font-size:13.5px">${x.d}</div>
+                ${x.pick?`<div class="kidflag"><i>Priced in the budget below</i></div>`:""}
+                ${x.star?`<div class="kidflag"><i>Best equipped for infants</i></div>`:""}
+                <div class="links">
+                  ${x.u?`<a href="${x.u}" target="_blank" rel="noopener">Hotel site ↗</a>`:""}
+                  <a href="${map(x.q)}" target="_blank" rel="noopener">Map ↗</a>
+                </div>
+              </div>`).join("")}
+          </div>`;
+      };
+      return `
+        <div class="htier ${k===t?"on":""}">
+          <div>
+            <h3>${v.label}</h3>
+            <div class="hrate">${yen(v.tokyo)} <span style="color:var(--tx-3)">/</span> ${yen(v.osaka)}
+              <small>Tokyo / Osaka · per night, room of 3</small>
+              <small style="margin-top:4px">9 nights total ${yen(v.tokyo*5+v.osaka*4)} · ${usd(v.tokyo*5+v.osaka*4)}</small></div>
+          </div>
+          <p style="margin:0;color:var(--tx-2);font-size:14.5px">${v.blurb}</p>
+          ${cityBlock("tokyo")}${cityBlock("osaka")}
+        </div>`;
+    }).join("");
+
+    // every property in one sortable-by-eye table, cheapest first
+    const all = [];
+    Object.entries(tiers).forEach(([k,v])=>v.hotels.forEach(x=>all.push(Object.assign({tier:v.label},x))));
+    all.sort((a,b)=>a.r-b.r);
+    document.querySelector("#hotelTable tbody").innerHTML = all.map(x=>`
+      <tr>
+        <td><a href="${x.u||map(x.q)}" target="_blank" rel="noopener">${x.n}</a>${x.pick?` <span class="tick">✓</span>`:""}</td>
+        <td style="color:var(--tx-2)">${CITYNAME[x.c]}</td>
+        <td style="color:var(--tx-2)">${x.tier}</td>
+        <td style="color:var(--tx-2)">${x.room}</td>
+        <td style="color:var(--tx-2)">${x.kit}</td>
+        <td class="n">${yen(x.r)}</td>
+        <td class="n">${yen(x.r*(x.c==="tokyo"?5:4))}</td>
+      </tr>`).join("");
   };
 
   // ---------- budget ----------
