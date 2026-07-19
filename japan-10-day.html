@@ -147,6 +147,27 @@
   .mapSvg .scaleG text{font-family:var(--f-data);font-size:10.5px;fill:var(--tx-3)}
   .mapSvg .mk{cursor:default}
   .mapSvg .mk:hover circle{stroke:var(--accent-ink);stroke-width:2.5}
+  .mapModes{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+  .mapNote{font-size:13.5px;color:var(--tx-2);max-width:56ch}
+  .mapControls{padding:12px 18px 0;display:flex;gap:10px;flex-wrap:wrap}
+  #leafletMap{height:560px;background:var(--surface-2)}
+  /* Leaflet paints its own chrome; align it with the page rather than leaving it default */
+  #leafletMap .leaflet-container{font-family:var(--f-body)}
+  #leafletMap .leaflet-popup-content{font-family:var(--f-body);font-size:14px;line-height:1.5}
+  #leafletMap .leaflet-popup-content b{font-family:var(--f-disp);font-size:14px}
+  #leafletMap .leaflet-control-attribution{font-family:var(--f-data);font-size:9.5px}
+  .dayPin span{display:flex;align-items:center;justify-content:center;width:26px;height:26px;
+    border-radius:50%;border:2.5px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4);
+    font-family:var(--f-disp);font-weight:800;font-size:13px;color:#0E1220}
+  /* OSM tiles are a light artwork; soften them under the dark theme without touching markers */
+  @media (prefers-color-scheme:dark){
+    #leafletMap .leaflet-tile-pane{filter:invert(1) hue-rotate(180deg) brightness(.92) contrast(.92)}
+  }
+  :root[data-theme="dark"] #leafletMap .leaflet-tile-pane{
+    filter:invert(1) hue-rotate(180deg) brightness(.92) contrast(.92)}
+  :root[data-theme="light"] #leafletMap .leaflet-tile-pane{filter:none}
+  @media (max-width:640px){ #leafletMap{height:420px} }
+
   .mapLegend{display:flex;flex-wrap:wrap;gap:6px 16px;padding:12px 18px;border-top:1px solid var(--line)}
   .lgd{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--tx-2)}
   .lgd i{width:11px;height:11px;border-radius:3px;flex:none}
@@ -296,6 +317,32 @@
       coloured by the rail line that carries it; the fine thread joins that day's own stops, and the
       dashed line runs through the days in order. Hover any dot for its name.</p>
 
+    <div class="mapModes">
+      <div class="seg" role="group" aria-label="Map style">
+        <button data-mapmode="diagram" aria-pressed="true">Diagram</button>
+        <button data-mapmode="live" aria-pressed="false">Real map</button>
+      </div>
+      <span class="mapNote" id="mapModeNote">The real map loads street tiles from
+        OpenStreetMap, so it needs a network connection.</span>
+    </div>
+
+    <div id="mapsLive" hidden>
+      <div class="mapCard">
+        <div class="mapHead"><b>All ten days</b><span>Pan, zoom, click any stop</span></div>
+        <div id="leafletMap"></div>
+        <div class="mapControls">
+          <div class="seg" role="group" aria-label="Zoom to region">
+            <button data-fit="all" aria-pressed="true">Whole trip</button>
+            <button data-fit="tokyo" aria-pressed="false">Tokyo</button>
+            <button data-fit="kansai" aria-pressed="false">Kansai</button>
+            <button data-fit="osaka" aria-pressed="false">Osaka</button>
+          </div>
+        </div>
+        <div class="mapLegend" id="liveLegend"></div>
+      </div>
+    </div>
+
+    <div id="mapsDiagram">
     <div class="mapCard">
       <div class="mapHead"><b>Kanto to Kansai</b><span>The whole trip · one bullet train</span></div>
       <div id="mapOverview"></div>
@@ -315,13 +362,15 @@
       <div class="mapHead"><b>Central Osaka · days 6, 9 & 10</b><span>Detail — the three days inside the city</span></div>
       <div id="mapOsaka"></div>
     </div>
+    </div>
 
     <p class="lede" style="margin:16px 0 0;font-size:14.5px">
-      Drawn rather than tiled: the page loads no external resources, so there is no Google or
-      OpenStreetMap layer underneath. Positions and the scale bars are computed from actual
-      latitude and longitude and are accurate to the eye; coastlines are left out rather than
-      approximated badly. For turn-by-turn directions, every stop in the day-by-day above carries
-      its own map link.</p>
+      Two views of the same ten days. The <b>diagram</b> is drawn into the page from real latitude
+      and longitude — no tile server, no third-party requests, works offline, and the scale bars are
+      computed rather than decorative. The <b>real map</b> pulls street tiles from OpenStreetMap and
+      needs a connection; where this page is embedded under a strict content security policy the
+      tiles are blocked, and it falls back to the diagram automatically. For turn-by-turn directions,
+      every stop in the day-by-day above carries its own map link.</p>
   </section>
 
   <section id="transfer">
@@ -1424,6 +1473,142 @@
   renderMaps();
   if (narrowQuery.addEventListener) narrowQuery.addEventListener("change", renderMaps);
   else if (narrowQuery.addListener) narrowQuery.addListener(renderMaps);
+
+  // ---------- the real map ----------
+  // Progressive enhancement. Leaflet and OpenStreetMap tiles come from a CDN, which works on
+  // the published site but is blocked wherever this page is embedded under a strict content
+  // security policy. A load failure is expected there, so this degrades back to the drawn
+  // diagram rather than leaving an empty box.
+  //
+  // Note on naming: Leaflet's global is L, which is already this file's rail-line colour
+  // table. The library is bound to LF throughout and never to L.
+  const LEAFLET = {
+    css:{href:"https://unpkg.com/leaflet@1.9.4/dist/leaflet.css",
+         sri:"sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H"},
+    js: {src:"https://unpkg.com/leaflet@1.9.4/dist/leaflet.js",
+         sri:"sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH"}
+  };
+
+  let leafletPromise = null;
+  function loadLeaflet(){
+    if (leafletPromise) return leafletPromise;
+    leafletPromise = new Promise((resolve, reject)=>{
+      if (window.L) return resolve(window.L);
+      let settled = false;
+      const fail = why => { if (!settled){ settled = true; reject(new Error(why)); } };
+
+      const css = document.createElement("link");
+      css.rel = "stylesheet"; css.href = LEAFLET.css.href;
+      css.integrity = LEAFLET.css.sri; css.crossOrigin = "anonymous";
+      document.head.appendChild(css);
+
+      const js = document.createElement("script");
+      js.src = LEAFLET.js.src;
+      js.integrity = LEAFLET.js.sri; js.crossOrigin = "anonymous";
+      js.onload = () => { if (window.L && !settled){ settled = true; resolve(window.L); }
+                          else fail("script ran but Leaflet is absent"); };
+      js.onerror = () => fail("blocked");
+      document.head.appendChild(js);
+
+      setTimeout(()=>{ if (!window.L) fail("timed out"); }, 9000);
+    });
+    return leafletPromise;
+  }
+
+  const BOUNDS = {
+    all:    [[34.30,135.10],[35.80,139.90]],
+    tokyo:  [[35.60,139.66],[35.75,139.82]],
+    kansai: [[34.40,135.20],[35.05,135.90]],
+    osaka:  [[34.64,135.47],[34.75,135.55]]
+  };
+
+  let liveMap = null;
+  function buildLiveMap(LF){
+    if (liveMap) return liveMap;
+    const lmap = LF.map("leafletMap", {scrollWheelZoom:false});
+    LF.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(lmap);
+
+    // the shinkansen leg, which the regional diagram deliberately leaves off
+    LF.polyline(SHINKANSEN, {color:L.tokaido.c, weight:3, opacity:.6, dashArray:"8 6"})
+      .addTo(lmap).bindPopup("<b>Day 6</b><br>Tokyo → Shin-Osaka<br>402 km by Nozomi, 2h27");
+
+    Object.keys(PLACES).map(Number).sort((a,b)=>a-b).forEach(n=>{
+      const day = days.find(d=>d.n===n);
+      const col = L[day.line].c;
+      const pts = PLACES[n].pts;
+
+      if (pts.length > 1){
+        LF.polyline(pts.map(p=>[p[1],p[2]]), {color:col, weight:3, opacity:.75}).addTo(lmap);
+      }
+      pts.forEach((p,i)=>{
+        LF.circleMarker([p[1],p[2]], {radius:6, color:"#fff", weight:2,
+          fillColor:col, fillOpacity:1}).addTo(lmap)
+          .bindPopup("<b>Day " + n + " · " + p[0] + "</b><br>" + PLACES[n].area +
+            '<br><a href="' + map(p[0]) + '" target="_blank" rel="noopener">Open in Google Maps</a>');
+        if (i === 0){
+          LF.marker([p[1],p[2]], {zIndexOffset:500, icon: LF.divIcon({className:"dayPin",
+            html:'<span style="background:' + col + '">' + n + '</span>',
+            iconSize:[26,26], iconAnchor:[13,13]})}).addTo(lmap)
+            .bindPopup("<b>Day " + n + "</b><br>" + day.t + "<br>" + PLACES[n].area);
+        }
+      });
+    });
+
+    lmap.fitBounds(BOUNDS.all, {padding:[18,18]});
+    liveMap = lmap;
+    return lmap;
+  }
+
+  const DEFAULT_NOTE = "The real map loads street tiles from OpenStreetMap, so it needs a " +
+    "network connection.";
+
+  function setMapMode(mode){
+    document.querySelectorAll("[data-mapmode]").forEach(b=>
+      b.setAttribute("aria-pressed", String(b.dataset.mapmode === mode)));
+    document.getElementById("mapsDiagram").hidden = mode !== "diagram";
+    document.getElementById("mapsLive").hidden = mode !== "live";
+  }
+
+  const mapNote = document.getElementById("mapModeNote");
+  document.querySelectorAll("[data-mapmode]").forEach(b=>{
+    b.addEventListener("click", ()=>{
+      if (b.dataset.mapmode === "diagram"){
+        setMapMode("diagram");
+        mapNote.textContent = DEFAULT_NOTE;
+        return;
+      }
+      mapNote.textContent = "Loading map tiles…";
+      loadLeaflet().then(LF=>{
+        setMapMode("live");
+        const m = buildLiveMap(LF);
+        setTimeout(()=>m.invalidateSize(), 60);  // built while the container was hidden
+        mapNote.innerHTML = "Street tiles &copy; OpenStreetMap contributors. Scroll-zoom is off " +
+          "so the page still scrolls — use + and −, or drag to pan.";
+        document.getElementById("liveLegend").innerHTML =
+          Object.keys(PLACES).map(Number).sort((a,b)=>a-b).map(n=>{
+            const d = days.find(x=>x.n===n);
+            return '<span class="lgd"><i style="background:' + L[d.line].c + '"></i>' +
+                   "<b>" + n + "</b> " + PLACES[n].area + "</span>";
+          }).join("");
+      }).catch(()=>{
+        setMapMode("diagram");
+        mapNote.textContent = "The interactive map can't load here — this page is embedded " +
+          "somewhere that blocks external map tiles. The diagram below shows the same route.";
+      });
+    });
+  });
+
+  document.querySelectorAll("[data-fit]").forEach(b=>{
+    b.addEventListener("click", ()=>{
+      if (!liveMap) return;
+      document.querySelectorAll("[data-fit]").forEach(x=>
+        x.setAttribute("aria-pressed", String(x===b)));
+      liveMap.fitBounds(BOUNDS[b.dataset.fit], {padding:[18,18]});
+    });
+  });
 
   // ---------- render food ----------
   document.getElementById("food").innerHTML = food.map(c=>`
