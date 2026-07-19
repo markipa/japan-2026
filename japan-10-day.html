@@ -1240,8 +1240,8 @@
   }
 
   // ---- the national overview -------------------------------------------------
-  function overviewMap(){
-    const W=900, PAD=54;
+  function overviewMap(W){
+    const PAD=54;
     const coords = OVERVIEW.map(o=>[o[1],o[2]]).concat(SHINKANSEN);
     const H = fitCanvas(coords, W, PAD, 300, 480).H;
     const P = projector(coords, W, H, PAD);
@@ -1325,8 +1325,8 @@
     return nodes;
   }
 
-  function cityMap(dayNums, label, within){
-    const W=700, PAD=52;
+  function cityMap(dayNums, label, within, W){
+    const PAD=52;
     const inBox = p => !within ||
       (p[1]>=within[0] && p[1]<=within[1] && p[2]>=within[2] && p[2]<=within[3]);
     const coords = [];
@@ -1398,14 +1398,29 @@
 
   const OSAKA_BOX = [34.60, 34.78, 135.42, 135.58];
 
-  document.getElementById("mapOverview").innerHTML = overviewMap();
-  document.getElementById("mapTokyo").innerHTML =
-    cityMap([1,2,3,4,5],"Map of central Tokyo showing days one to five") + legendFor([1,2,3,4,5]);
-  document.getElementById("mapKansai").innerHTML =
-    cityMap([6,7,8,9,10],"Map of the Kansai region showing days six to ten") + legendFor([6,7,8,9,10]);
-  document.getElementById("mapOsaka").innerHTML =
-    cityMap([6,9,10],"Detail map of central Osaka showing days six, nine and ten",OSAKA_BOX)
-    + legendFor([6,9,10]);
+  const narrowQuery = window.matchMedia("(max-width: 640px)");
+  let renderedNarrow = null;
+
+  function renderMaps(){
+    const narrow = narrowQuery.matches;
+    if (narrow === renderedNarrow) return;   // only redraw when the breakpoint actually flips
+    renderedNarrow = narrow;
+    const wOverview = narrow ? 430 : 900;
+    const wCity     = narrow ? 400 : 700;
+    document.getElementById("mapOverview").innerHTML = overviewMap(wOverview);
+    document.getElementById("mapTokyo").innerHTML =
+      cityMap([1,2,3,4,5],"Map of central Tokyo showing days one to five",null,wCity)
+      + legendFor([1,2,3,4,5]);
+    document.getElementById("mapKansai").innerHTML =
+      cityMap([6,7,8,9,10],"Map of the Kansai region showing days six to ten",null,wCity)
+      + legendFor([6,7,8,9,10]);
+    document.getElementById("mapOsaka").innerHTML =
+      cityMap([6,9,10],"Detail map of central Osaka showing days six, nine and ten",OSAKA_BOX,wCity)
+      + legendFor([6,9,10]);
+  }
+  renderMaps();
+  if (narrowQuery.addEventListener) narrowQuery.addEventListener("change", renderMaps);
+  else if (narrowQuery.addListener) narrowQuery.addListener(renderMaps);
 
   // ---------- render food ----------
   document.getElementById("food").innerHTML = food.map(c=>`
