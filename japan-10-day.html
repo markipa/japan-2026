@@ -1252,12 +1252,15 @@
     const marks = OVERVIEW.map(o=>{
       const [x,y] = P(o[1],o[2]);
       const major = o[3];
-      const anchor = o[0]==="Kansai Airport" ? "end" : "middle";
+      // Anchoring by name pushed "Kansai Airport" off the left edge once the canvas
+      // narrowed. Choose from where the point actually falls, and clamp inside the box.
+      const anchor = x < W*0.22 ? "start" : x > W*0.80 ? "end" : "middle";
+      const tx = Math.max(6, Math.min(W-6, x));
       const dy = (o[0]==="Mt Fuji"||o[0]==="Nara") ? 26 : -16;
       return `<g class="mk"><title>${o[0]}</title>
         <circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${major?6:4.5}"
           fill="${major?"var(--accent-ink)":"var(--tx-3)"}" stroke="var(--surface)" stroke-width="2"/>
-        <text x="${x.toFixed(1)}" y="${(y+dy).toFixed(1)}" text-anchor="${anchor}"
+        <text x="${tx.toFixed(1)}" y="${(y+dy).toFixed(1)}" text-anchor="${anchor}"
           class="mlab ${major?"maj":""}">${o[0]}</text></g>`;
     }).join("");
 
