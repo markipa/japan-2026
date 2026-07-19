@@ -172,7 +172,7 @@
   .mapHead span{font-family:var(--f-data);font-size:10.5px;letter-spacing:.1em;
     text-transform:uppercase;color:var(--tx-3)}
   .mapSvg{display:block;width:100%;height:auto;background:var(--surface)}
-  .mapSvg.city{max-width:600px;margin:0 auto}
+  .mapSvg.city{margin:0 auto}
   .mapSvg .grat line{stroke:var(--line);stroke-width:1;opacity:.65}
   .mapSvg .mlab{font-family:var(--f-data);font-size:12px;fill:var(--tx-2)}
   .mapSvg .mlab.maj{fill:var(--tx);font-weight:700}
@@ -1410,7 +1410,8 @@
           class="badge">${c.n}</text></g>`;
     }).join("");
 
-    return `<svg class="mapSvg city" viewBox="0 0 ${Wc} ${H}" role="img" aria-label="${label}"
+    const dispW = Math.min(620, Math.round(700 * Wc / H));
+    return `<svg class="mapSvg city" style="max-width:${dispW}px" viewBox="0 0 ${Wc} ${H}" role="img" aria-label="${label}"
         xmlns="http://www.w3.org/2000/svg">
       ${graticule(P,Wc,H)}${dash}${g}${badges}
       <g class="scaleG" transform="translate(${PAD-16},${H-20})">
