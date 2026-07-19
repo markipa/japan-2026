@@ -346,6 +346,11 @@
       <div id="mapKansai"></div>
     </div>
 
+    <div class="mapCard">
+      <div class="mapHead"><b>Central Osaka · days 6, 9 & 10</b><span>Detail — the three days inside the city</span></div>
+      <div id="mapOsaka"></div>
+    </div>
+
     <p class="lede" style="margin:16px 0 0;font-size:14.5px">
       Drawn rather than tiled: the page loads no external resources, so there is no Google or
       OpenStreetMap layer underneath. Positions and the scale bars are computed from actual
@@ -1273,7 +1278,7 @@
   function overviewMap(){
     const W=900, PAD=54;
     const coords = OVERVIEW.map(o=>[o[1],o[2]]).concat(SHINKANSEN);
-    const H = fitHeight(coords, W, PAD, 300, 480);
+    const H = fitCanvas(coords, W, PAD, 300, 480).H;
     const P = projector(coords, W, H, PAD);
     const line = SHINKANSEN.map(c=>P(c[0],c[1]).map(v=>v.toFixed(1)).join(",")).join(" ");
     const sb = scaleBar(P, 190);
@@ -1311,36 +1316,75 @@
   // ---- a city map for a run of days ------------------------------------------
   // Canvas height follows the data's own aspect ratio. A fixed 900x430 box left a nearly
   // square city bbox fitting to height, with a third of the width empty on either side.
-  function fitHeight(coords, W, PAD, min, max){
+  function fitCanvas(coords, maxW, PAD, minH, maxH){
     const lats = coords.map(c=>c[0]), lons = coords.map(c=>c[1]);
     const lat0 = (Math.min(...lats)+Math.max(...lats))/2;
     const spanX = (Math.max(...lons)-Math.min(...lons))*Math.cos(rad(lat0));
     const spanY = Math.max(...lats)-Math.min(...lats);
-    if (spanX <= 0) return min;
-    return Math.round(Math.max(min, Math.min(max, (W-2*PAD)*(spanY/spanX) + 2*PAD)));
+    if (spanX <= 0 || spanY <= 0) return {W:maxW, H:minH};
+    const aspect = spanY/spanX;
+    let innerW = maxW - 2*PAD;
+    let innerH = innerW*aspect;
+    // too tall to sit comfortably on a page: cap the height and narrow the canvas to match,
+    // rather than keeping a wide box the data cannot fill
+    const maxInnerH = maxH - 2*PAD;
+    if (innerH > maxInnerH){ innerH = maxInnerH; innerW = innerH/aspect; }
+    const minInnerH = minH - 2*PAD;
+    if (innerH < minInnerH){ innerH = minInnerH; innerW = Math.min(innerW, maxW-2*PAD); }
+    return {W: Math.round(Math.max(340, innerW + 2*PAD)), H: Math.round(innerH + 2*PAD)};
   }
 
-  function cityMap(dayNums, label){
+  // Days that share a district land their badges on top of each other — 6, 9 and 10 all sit
+  // in central Osaka. Nudge any overlapping badges apart and draw a leader back to the true
+  // position, so the map stays readable without lying about where anything is.
+  function relax(nodes, r, iterations){
+    const min = r*2 + 5;
+    for (let it=0; it<iterations; it++){
+      let moved = false;
+      for (let i=0; i<nodes.length; i++){
+        for (let j=i+1; j<nodes.length; j++){
+          const a=nodes[i], b=nodes[j];
+          let dx=b.x-a.x, dy=b.y-a.y;
+          let d=Math.hypot(dx,dy);
+          if (d >= min) continue;
+          if (d < 0.01){ dx = (i%2?1:-1)*0.5; dy = 0.5; d = Math.hypot(dx,dy); }
+          const push = (min-d)/2;
+          const ux=dx/d, uy=dy/d;
+          a.x -= ux*push; a.y -= uy*push;
+          b.x += ux*push; b.y += uy*push;
+          moved = true;
+        }
+      }
+      if (!moved) break;
+    }
+    return nodes;
+  }
+
+  function cityMap(dayNums, label, within){
     const W=700, PAD=52;
+    const inBox = p => !within ||
+      (p[1]>=within[0] && p[1]<=within[1] && p[2]>=within[2] && p[2]<=within[3]);
     const coords = [];
-    dayNums.forEach(n=>PLACES[n].pts.forEach(p=>coords.push([p[1],p[2]])));
-    const H = fitHeight(coords, W, PAD, 420, 900);
-    const P = projector(coords, W, H, PAD);
+    dayNums.forEach(n=>PLACES[n].pts.filter(inBox).forEach(p=>coords.push([p[1],p[2]])));
+    const fit = fitCanvas(coords, W, PAD, 420, 820), Wc = fit.W, H = fit.H;
+    const P = projector(coords, Wc, H, PAD);
     const sb = scaleBar(P, 170);
 
     let g = "";
-    const centroids = [];
+    const nodes = [];
     dayNums.forEach(n=>{
       const col = L[days.find(d=>d.n===n).line].c;
-      const pts = PLACES[n].pts.map(p=>P(p[1],p[2]));
-      centroids.push([n, pts.reduce((a,p)=>a+p[0],0)/pts.length,
-                         pts.reduce((a,p)=>a+p[1],0)/pts.length, col]);
-      // thin thread joining that day's own stops, in the day's rail-line colour
+      const use = PLACES[n].pts.filter(inBox);
+      if (!use.length) return;
+      const pts = use.map(p=>P(p[1],p[2]));
+      nodes.push({n, col,
+        cx: pts.reduce((a,p)=>a+p[0],0)/pts.length,
+        cy: pts.reduce((a,p)=>a+p[1],0)/pts.length});
       if (pts.length>1){
         g += `<polyline points="${pts.map(p=>p.map(v=>v.toFixed(1)).join(",")).join(" ")}"
-          fill="none" stroke="${col}" stroke-width="2" stroke-linejoin="round" opacity=".55"/>`;
+          fill="none" stroke="${col}" stroke-width="2" stroke-linejoin="round" opacity=".5"/>`;
       }
-      PLACES[n].pts.forEach((p,i)=>{
+      use.forEach((p,i)=>{
         const [x,y] = pts[i];
         g += `<g class="mk"><title>Day ${n} · ${p[0]}</title>
           <circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4.5" fill="${col}"
@@ -1348,22 +1392,27 @@
       });
     });
 
-    // dashed thread between days, in order
-    const order = centroids.map(c=>c[1].toFixed(1)+","+c[2].toFixed(1)).join(" ");
+    const order = nodes.map(c=>c.cx.toFixed(1)+","+c.cy.toFixed(1)).join(" ");
     const dash = `<polyline points="${order}" fill="none" stroke="var(--tx-3)" stroke-width="1.5"
       stroke-dasharray="5 5" opacity=".7"/>`;
 
-    // numbered day badges, offset a little so they never sit on their own dots
-    const badges = centroids.map(c=>`
-      <g class="mk"><title>Day ${c[0]} · ${PLACES[c[0]].area}</title>
-        <circle cx="${c[1].toFixed(1)}" cy="${c[2].toFixed(1)}" r="14" fill="${c[3]}"
+    const placed = relax(nodes.map(c=>({...c, x:c.cx, y:c.cy})), 15, 120);
+    const badges = placed.map(c=>{
+      const shifted = Math.hypot(c.x-c.cx, c.y-c.cy) > 3;
+      const leader = shifted
+        ? `<line x1="${c.cx.toFixed(1)}" y1="${c.cy.toFixed(1)}" x2="${c.x.toFixed(1)}"
+             y2="${c.y.toFixed(1)}" stroke="${c.col}" stroke-width="1.5" opacity=".65"/>
+           <circle cx="${c.cx.toFixed(1)}" cy="${c.cy.toFixed(1)}" r="2.5" fill="${c.col}"/>` : "";
+      return `${leader}<g class="mk"><title>Day ${c.n} · ${PLACES[c.n].area}</title>
+        <circle cx="${c.x.toFixed(1)}" cy="${c.y.toFixed(1)}" r="14" fill="${c.col}"
           stroke="var(--surface)" stroke-width="2.5"/>
-        <text x="${c[1].toFixed(1)}" y="${(c[2]+4.5).toFixed(1)}" text-anchor="middle"
-          class="badge">${c[0]}</text></g>`).join("");
+        <text x="${c.x.toFixed(1)}" y="${(c.y+4.5).toFixed(1)}" text-anchor="middle"
+          class="badge">${c.n}</text></g>`;
+    }).join("");
 
-    return `<svg class="mapSvg city" viewBox="0 0 ${W} ${H}" role="img" aria-label="${label}"
+    return `<svg class="mapSvg city" viewBox="0 0 ${Wc} ${H}" role="img" aria-label="${label}"
         xmlns="http://www.w3.org/2000/svg">
-      ${graticule(P,W,H)}${dash}${g}${badges}
+      ${graticule(P,Wc,H)}${dash}${g}${badges}
       <g class="scaleG" transform="translate(${PAD-16},${H-20})">
         <line x1="0" y1="0" x2="${sb.px.toFixed(1)}" y2="0"/>
         <line x1="0" y1="-4" x2="0" y2="4"/>
@@ -1381,11 +1430,16 @@
     }).join("")}</div>`;
   }
 
+  const OSAKA_BOX = [34.60, 34.78, 135.42, 135.58];
+
   document.getElementById("mapOverview").innerHTML = overviewMap();
   document.getElementById("mapTokyo").innerHTML =
     cityMap([1,2,3,4,5],"Map of central Tokyo showing days one to five") + legendFor([1,2,3,4,5]);
   document.getElementById("mapKansai").innerHTML =
     cityMap([6,7,8,9,10],"Map of the Kansai region showing days six to ten") + legendFor([6,7,8,9,10]);
+  document.getElementById("mapOsaka").innerHTML =
+    cityMap([6,9,10],"Detail map of central Osaka showing days six, nine and ten",OSAKA_BOX)
+    + legendFor([6,9,10]);
 
   // ---------- render food ----------
   document.getElementById("food").innerHTML = food.map(c=>`
