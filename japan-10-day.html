@@ -72,9 +72,7 @@
   .lede{color:var(--tx-2);max-width:62ch;margin:0 0 26px}
 
   /* ---------- metro line + day cards ---------- */
-  .rail{position:relative;padding-left:56px}
-  .rail:before{content:"";position:absolute;left:19px;top:14px;bottom:60px;width:3px;
-    background:var(--line);border-radius:2px}
+  .rail{position:relative}
   .day{position:relative;margin-bottom:14px;background:var(--surface);border:1px solid var(--line);
     border-radius:var(--r);overflow:hidden}
   .day.hide{display:none}
@@ -139,6 +137,52 @@
   .kidflag{font-family:var(--f-data);font-size:10px;letter-spacing:.09em;text-transform:uppercase;
     color:var(--tx-3);margin-top:2px}
   .kidflag i{font-style:normal;color:var(--baby);font-weight:700}
+
+  /* ----- day tabs ----- */
+  .daytabs{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 14px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
+  .daytabs::-webkit-scrollbar{height:7px}
+  .daytabs::-webkit-scrollbar-thumb{background:var(--line);border-radius:6px}
+  .daytab{scroll-snap-align:start;flex:0 0 auto;min-width:122px;text-align:left;cursor:pointer;
+    background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:9px 12px 10px;
+    border-top:3px solid var(--dotc,var(--line));transition:background .15s,border-color .15s,box-shadow .15s}
+  .daytab:hover{background:var(--surface-2)}
+  .daytab:focus-visible{outline:2px solid var(--accent-ink);outline-offset:2px}
+  .daytab[aria-selected="true"]{border-color:var(--accent-ink);box-shadow:0 3px 12px rgba(0,0,0,.12)}
+  .daytab .dn{font-family:var(--f-data);font-size:9.5px;letter-spacing:.14em;color:var(--tx-3)}
+  .daytab .dd{font-family:var(--f-data);font-size:10px;color:var(--accent);margin-left:6px}
+  .daytab .dt2{font-family:var(--f-disp);font-weight:700;font-size:13px;line-height:1.22;margin:4px 0 5px}
+  .daytab .dc{font-family:var(--f-data);font-size:10.5px;color:var(--tx-2)}
+  .daytab.hide{display:none}
+  .tabpanel{display:none;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+  .tabpanel.on{display:block;animation:fadeUp .22s ease}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){.tabpanel.on{animation:none}}
+  .glance{display:flex;flex-wrap:wrap;gap:8px;margin:15px 20px 2px}
+  .gchip{font-family:var(--f-data);font-size:11px;letter-spacing:.02em;background:var(--surface-2);
+    border:1px solid var(--line);border-radius:999px;padding:5px 11px;color:var(--tx-2)}
+  .gchip b{color:var(--tx);font-weight:600}
+  .gchip.book{background:var(--accent-soft);border-color:transparent;color:var(--tx)}
+  .gchip.book::before{content:"★ ";color:var(--accent)}
+  .gchip.load b.heavy{color:#c0392b}.gchip.load b.medium{color:#b9770e}.gchip.load b.light{color:var(--good)}
+  .sect{font-family:var(--f-data);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--tx-3);margin:20px 20px 10px;padding-top:15px;border-top:1px solid var(--line);
+    display:flex;align-items:center;gap:8px}
+  .go{list-style:none;margin:0;padding:0 20px}
+  .goleg{display:grid;grid-template-columns:116px 1fr auto;gap:14px;align-items:start;padding:10px 0;border-bottom:1px dashed var(--line)}
+  .goleg:last-child{border-bottom:0}
+  .goln{display:inline-flex;align-items:center;gap:7px;font-family:var(--f-data);font-size:10.5px;color:var(--tx-2);line-height:1.3}
+  .goln i{width:11px;height:11px;border-radius:3px;flex:0 0 auto;margin-top:1px}
+  .god{font-size:14.5px;color:var(--tx);line-height:1.4}
+  .got{font-family:var(--f-data);font-size:11px;color:var(--tx-2);white-space:nowrap;text-align:right}
+  .got b{display:block;color:var(--tx);font-size:12px}
+  .eatgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;padding:0 20px}
+  .tabpanel .dbody2{padding:0 0 20px}
+  @media (max-width:640px){
+    .goleg{grid-template-columns:1fr;gap:3px}
+    .got{text-align:left}
+    .glance,.sect,.go,.eatgrid{margin-left:16px;margin-right:16px;padding-left:16px;padding-right:16px}
+    .go,.eatgrid{padding-left:16px;padding-right:16px}
+  }
 
   /* ---------- maps ---------- */
   .mapCard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
@@ -272,7 +316,7 @@
   .credit a:hover{color:var(--accent);border-bottom-color:var(--accent)}
   @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
   @media (max-width:640px){
-    .rail{padding-left:32px}.rail:before{left:7px}.dot{left:-31px;width:15px;height:15px;border-width:3px}
+    .daytab{min-width:108px}
     .stop{grid-template-columns:1fr;gap:2px}.t{padding-top:0}.price{padding-top:4px;text-align:left}
     header.top{padding-top:44px}
     .dhead{padding:14px 16px;gap:10px}.dnum{min-width:38px}.dtitle{font-size:17px}
@@ -321,10 +365,11 @@
   <section id="days">
     <span class="eyebrow">The route</span>
     <h2>Day by day</h2>
-    <p class="lede">Tap a day to open it. Times are guides, not a schedule. Prices are the total for
-      two adults — the baby is free at every single stop in this itinerary. Each day is headed by a
-      freely-licensed photograph, credited in its corner, sitting over a drawing made for this page;
-      where the photographs are blocked you get the drawings instead.</p>
+    <p class="lede">Pick a day for its plan, how to get around, and where to eat. Times are guides,
+      not a schedule. Prices are the total for two adults — the baby is free at every single stop in
+      this itinerary. Each day is headed by a freely-licensed photograph, credited in its corner,
+      sitting over a drawing made for this page; where the photographs are blocked you get the
+      drawings instead.</p>
     <div class="rail" id="rail"></div>
   </section>
 
@@ -612,7 +657,8 @@
     yurikamome:{n:"Yurikamome",c:"#0079C2"},     tokaido:{n:"Tokaido Shinkansen",c:"#0068B7"},
     jrkyoto:{n:"JR Kyoto Line",c:"#0072BC"},     kintetsu:{n:"Kintetsu Nara Line",c:"#C1272D"},
     midosuji:{n:"Midosuji Line",c:"#E5171F"},    nankai:{n:"Nankai Airport Line",c:"#003894"},
-    keiyo:{n:"JR Keiyo Line",c:"#C9252F"},       skyliner:{n:"Narita Express",c:"#E60012"}
+    keiyo:{n:"JR Keiyo Line",c:"#C9252F"},       skyliner:{n:"Narita Express",c:"#E60012"},
+    marunouchi:{n:"Marunouchi Line",c:"#F62E36"}, walk:{n:"On foot",c:"#8A94A6"}
   };
 
   // ---------- illustrations: flat vector, three depth layers, theme-aware ----------
@@ -994,6 +1040,105 @@
    ]}
   ];
 
+  // ---------- per-day extras: date, pace, what to book, how to get around, where to eat ----------
+  // Kept separate from `days` so the itinerary data above stays easy to scan. Transport legs are
+  // drawn from the planned routes; fares are per adult and approximate.
+  const DAILY = {
+   1:{date:"Nov 30 · Mon", load:"Light", book:["Nankai Rapi:t seats (optional)"],
+      go:[
+       {ln:"nankai",d:"Kansai Airport → Nankai Rapi:t → Namba",t:"38 min",p:1490},
+       {ln:"walk",d:"Namba → Shinsaibashi (Apartment Hotel 11)",t:"8 min",p:0},
+       {ln:"walk",d:"Hotel → Dotonbori for dinner",t:"6 min",p:0}],
+      eat:[
+       {n:"Mizuno",b:"¥¥",a:"Dotonbori",d:"Bib Gourmand okonomiyaki, yamaimo batter. ~30 min queue.",q:"Mizuno Okonomiyaki Dotonbori"},
+       {n:"Chibo",b:"¥¥",a:"Dotonbori",d:"Tables, high chairs, canal view — the easy option with a baby.",u:"https://chibo.com/",q:"Chibo Dotonbori"},
+       {n:"Ichiran",b:"¥",a:"Namba",d:"Solo-booth tonkotsu ramen, open late, open 24h.",u:"https://en.ichiran.com/",q:"Ichiran Namba"}]},
+   2:{date:"Dec 1 · Tue", load:"Medium", book:["Osaka Amazing Pass (optional)"],
+      go:[
+       {ln:"midosuji",d:"Namba → Midosuji → Hommachi, Chuo Line → Morinomiya (Osaka Castle, Exit 3-B)",t:"20 min",p:240},
+       {ln:"midosuji",d:"Morinomiya → Nippombashi (Kuromon Ichiba, Exit 10)",t:"15 min",p:240},
+       {ln:"midosuji",d:"Namba → Midosuji → Umeda (Hankyu depachika & Umeda Sky)",t:"9 min",p:240},
+       {ln:"walk",d:"Umeda Station → Umeda Sky Building",t:"10 min",p:0}],
+      eat:[
+       {n:"Kuromon Ichiba stalls",b:"¥",a:"Nippombashi",d:"Grilled scallops, tuna, wagyu skewers, fruit. Graze standing.",u:"https://kuromon.com/en/",q:"Kuromon Ichiba Market"},
+       {n:"Hankyu Umeda depachika",b:"¥¥",a:"Umeda",d:"Japan's most extravagant food hall — buy dinner, take it back.",q:"Hankyu Umeda depachika"},
+       {n:"551 Horai",b:"¥",a:"Namba / Umeda",d:"Warm pork buns, the Osaka souvenir everyone actually wants.",q:"551 Horai Namba"}]},
+   3:{date:"Dec 2 · Wed", load:"Heavy", book:["Sagano Romantic Train (reserve a carriage)","JR tickets"],
+      go:[
+       {ln:"jrkyoto",d:"Namba → Umeda, JR Osaka → Saga-Arashiyama",t:"70 min",p:1110},
+       {ln:"jrkyoto",d:"Sagano Romantic Train: Torokko Saga → Kameoka",t:"25 min",p:880},
+       {ln:"jrkyoto",d:"Return to Kyoto, JR Nara Line → Inari (Fushimi Inari)",t:"30 min",p:150},
+       {ln:"walk",d:"Taxi/bus to Kiyomizu-dera, walk down Ninenzaka",t:"20 min",p:300},
+       {ln:"jrkyoto",d:"Kyoto → Osaka (JR Special Rapid)",t:"29 min",p:580}],
+      eat:[
+       {n:"Nishiki Market",b:"¥",a:"Kyoto",d:"400m covered market, 'Kyoto's kitchen'. Busy by 11:00.",q:"Nishiki Market Kyoto"},
+       {n:"Arashiyama yudofu",b:"¥¥",a:"Arashiyama",d:"Hot tofu hotpot by the bamboo grove — warming in December.",q:"Arashiyama yudofu Kyoto"},
+       {n:"Omen",b:"¥¥",a:"Ginkaku-ji",d:"Handmade udon in a farmhouse room, tables, welcoming.",q:"Omen Ginkakuji Kyoto"}]},
+   4:{date:"Dec 3 · Thu", load:"Heavy", book:[],
+      go:[
+       {ln:"kintetsu",d:"Osaka-Namba → Kintetsu Nara Line → Kintetsu-Nara",t:"39 min",p:680},
+       {ln:"walk",d:"Kintetsu-Nara → Nara Park & Todai-ji",t:"20 min",p:0},
+       {ln:"kintetsu",d:"Kintetsu-Nara → Osaka-Namba",t:"39 min",p:680},
+       {ln:"midosuji",d:"Namba → Midosuji → Dobutsuen-mae (Shinsekai & Tsutenkaku)",t:"6 min",p:190}],
+      eat:[
+       {n:"Nakatanidou",b:"¥",a:"Nara",d:"Mochi pounded at terrifying speed — ¥200 for the yomogi mochi.",q:"Nakatanidou Nara"},
+       {n:"Kushikatsu Daruma",b:"¥¥",a:"Shinsekai",d:"Deep-fried skewers, one sauce pot, no double-dipping.",u:"https://kushikatu-daruma.com/",q:"Kushikatsu Daruma Shinsekai"},
+       {n:"Naramachi teishoku",b:"¥¥",a:"Nara",d:"Kakinoha-zushi and set meals in the old merchant quarter.",q:"Naramachi Nara"}]},
+   5:{date:"Dec 4 · Fri", load:"Light", book:["Nozomi reserved seats (A side)"],
+      go:[
+       {ln:"midosuji",d:"Namba → Midosuji → Shin-Osaka",t:"12 min",p:290},
+       {ln:"tokaido",d:"Nozomi Shin-Osaka → Tokyo (A-side window for Fuji)",t:"2h27",p:15490},
+       {ln:"marunouchi",d:"Tokyo Station → Marunouchi Line → Yotsuya-sanchome (KOKO Hotel)",t:"8 min",p:180}],
+      eat:[
+       {n:"Ekibenya Matsuri",b:"¥",a:"Tokyo Station",d:"170 ekiben varieties on the concourse — buy before you board.",q:"Ekibenya Matsuri Tokyo Station"},
+       {n:"Omoide Yokocho",b:"¥¥",a:"Shinjuku",d:"Eight-seat yakitori alleys under the tracks. Smoky, not for the baby.",q:"Omoide Yokocho Shinjuku"},
+       {n:"Fuunji",b:"¥",a:"Shinjuku",d:"The tsukemen benchmark. Queue by 11:00 or after 20:00.",q:"Fuunji Shinjuku"}]},
+   6:{date:"Dec 5 · Sat", load:"Medium", book:["Skytree Tembo Deck (optional)"],
+      go:[
+       {ln:"marunouchi",d:"Yotsuya-sanchome → Marunouchi → Akasaka-mitsuke",t:"3 min",p:180},
+       {ln:"ginza",d:"Akasaka-mitsuke → Ginza Line → Asakusa (Exit 1, Kaminarimon)",t:"30 min",p:0},
+       {ln:"walk",d:"Asakusa → Tobu Skytree Line → Tokyo Skytree (1 stop)",t:"3 min",p:160}],
+      eat:[
+       {n:"Daikokuya Tempura",b:"¥¥",a:"Asakusa",d:"Since 1887, sesame-oil tempura over rice. Expect a queue.",q:"Daikokuya Tempura Asakusa"},
+       {n:"Nakamise snacks",b:"¥",a:"Asakusa",d:"Ningyo-yaki, age-manju, melon pan along the temple approach.",q:"Nakamise Shopping Street"},
+       {n:"Solamachi food floor",b:"¥¥",a:"Tokyo Skytree",d:"Lifts, baby rooms, dozens of sit-down options under the tower.",q:"Tokyo Solamachi"}]},
+   7:{date:"Dec 6 · Sun", load:"Medium", book:["Shibuya Sky sunset slot"],
+      go:[
+       {ln:"marunouchi",d:"Yotsuya-sanchome → Marunouchi → Shinjuku",t:"6 min",p:180},
+       {ln:"yamanote",d:"Shinjuku → JR Yamanote → Harajuku (Omotesando Exit, Meiji Jingu)",t:"4 min",p:150},
+       {ln:"yamanote",d:"Harajuku → JR Yamanote → Shibuya (Hachiko Exit)",t:"2 min",p:150}],
+      eat:[
+       {n:"Harajuku crepes",b:"¥",a:"Takeshita St",d:"The street-food rite of passage. Marion or Santa Monica.",q:"Marion Crepes Harajuku"},
+       {n:"Uobei Genki Sushi",b:"¥",a:"Shibuya",d:"Touchscreen order, plates on a rail at ¥180. Fun, fine with a baby.",q:"Uobei Shibuya"},
+       {n:"Ichiran",b:"¥",a:"Shibuya",d:"Solo-booth tonkotsu, open 24h.",u:"https://en.ichiran.com/",q:"Ichiran Shibuya"}]},
+   8:{date:"Dec 7 · Mon", load:"Heavy", book:["Tokyo Disneyland date tickets"],
+      go:[
+       {ln:"marunouchi",d:"Yotsuya-sanchome → Marunouchi → Tokyo Station (M17)",t:"10 min",p:180},
+       {ln:"keiyo",d:"Tokyo → JR Keiyo/Musashino → Maihama (long transfer, allow 10–15 min)",t:"18 min",p:230},
+       {ln:"walk",d:"Maihama South Exit → park gates",t:"5 min",p:0}],
+      eat:[
+       {n:"World Bazaar restaurants",b:"¥¥",a:"In park",d:"Sit-down lunch under the arcade, next to the Baby Center.",q:"World Bazaar Tokyo Disneyland"},
+       {n:"Popcorn & churro carts",b:"¥",a:"In park",d:"Flavoured popcorn is the park's signature snack — buy a souvenir bucket.",q:"Tokyo Disneyland popcorn"},
+       {n:"Ikspiari",b:"¥¥",a:"Maihama (outside gate)",d:"Mall of restaurants by the station if you leave the park to eat.",q:"Ikspiari Maihama"}]},
+   9:{date:"Dec 8 · Tue", load:"Light", book:[],
+      go:[
+       {ln:"marunouchi",d:"Yotsuya-sanchome → Marunouchi → Ginza, Ginza Line → Ueno",t:"25 min",p:210},
+       {ln:"yamanote",d:"Ueno → JR Yamanote → Akihabara (Electric Town Exit)",t:"4 min",p:150},
+       {ln:"yamanote",d:"Akihabara → Chuo-Sobu → Yotsuya, walk to hotel",t:"12 min",p:170}],
+      eat:[
+       {n:"Ameyoko standing bars",b:"¥",a:"Ueno",d:"Standing seafood counters and ¥500 beers under the tracks.",q:"Ameyoko Market Ueno"},
+       {n:"Izu-ei",b:"¥¥¥",a:"Ueno",d:"Unagi over rice since the Edo period, overlooking Shinobazu Pond.",q:"Izuei Ueno unagi"},
+       {n:"Yodobashi 8F dining",b:"¥¥",a:"Akihabara",d:"A whole restaurant floor above the electronics — easy with a stroller.",q:"Yodobashi Akiba dining"}]},
+   10:{date:"Dec 9 · Wed", load:"Light", book:["Narita Express reserved seats"],
+      go:[
+       {ln:"walk",d:"Hotel → Yotsuya-sanchome / Yotsuya Station",t:"3 min",p:0},
+       {ln:"marunouchi",d:"Yotsuya → Tokyo Station (or Shinjuku for N'EX)",t:"8 min",p:180},
+       {ln:"skyliner",d:"Narita Express → Narita Airport (reserved, luggage space)",t:"~90 min",p:3070}],
+      eat:[
+       {n:"Konbini breakfast",b:"¥",a:"Anywhere",d:"Egg sando, hot canned coffee, karaage-kun — the underrated meal.",q:"7-Eleven Tokyo"},
+       {n:"Ekibenya Matsuri",b:"¥",a:"Tokyo Station",d:"Take-home bento for the flight, 170 kinds.",q:"Ekibenya Matsuri Tokyo Station"}]}
+  };
+
   // ---------- food ----------
   const food = [
    {c:"Tokyo · Ramen & tsukemen", w:"Days 5–10 · queue 10–40 min", note:"No reservations, no lingering. Buy a ticket at the vending machine, sit, eat in fifteen minutes, leave. Counter-only, so these are a solo errand.",
@@ -1182,8 +1327,21 @@
   const dayCost = d => d.stops.reduce((a,s)=>a+(s.p||0),0);
   const CITY = {tokyo:"Tokyo", kansai:"Kansai"};
 
-  rail.innerHTML = days.map(d=>{
-    const ln = L[d.line];
+  // Tab strip — one button per day.
+  const tabStrip = `<div class="daytabs" role="tablist" aria-label="Choose a day">` +
+    days.map(d=>{
+      const ln = L[d.line], x = DAILY[d.n] || {};
+      return `<button class="daytab" role="tab" id="tab-${d.n}" aria-controls="panel-${d.n}"
+        aria-selected="false" data-day="${d.n}" data-loc="${d.city}" style="--dotc:${ln.c}">
+        <div class="dn">DAY ${String(d.n).padStart(2,"0")}<span class="dd">${x.date?x.date.split(" · ")[0]:""}</span></div>
+        <div class="dt2">${d.t}</div>
+        <div class="dc">${yen(dayCost(d)*2)} / 3</div>
+      </button>`;
+    }).join("") + `</div>`;
+
+  // One panel per day.
+  const panels = days.map(d=>{
+    const ln = L[d.line], x = DAILY[d.n] || {};
     const stops = d.stops.map(s=>`
       <div class="stop">
         <div class="t">${s.t}</div>
@@ -1198,30 +1356,94 @@
         <div class="price ${s.p?"":"free"}">${s.pl?s.pl:(s.p?yen(s.p*2):"free")}
           ${s.p?`<div class="kidflag">×2 adults · <i>baby free</i></div>`:""}</div>
       </div>`).join("");
-    return `<details class="day" data-loc="${d.city}">
-      <span class="dot" style="--dotc:${ln.c}"></span>
-      <summary class="dhead">
-        <span class="dnum">DAY ${String(d.n).padStart(2,"0")}</span>
-        <span class="dtitle">${d.t}<span>${d.s}</span></span>
-        <span class="dcost">${yen(dayCost(d)*2)} <span style="color:var(--tx-3)">/ 3</span></span>
-        <span class="chev">▸</span>
-      </summary>
-      <div class="dbody" style="padding-left:0;padding-right:0">
-        <div class="illoHost" data-day="${d.n}">${ILLO[d.illo]}</div>
-        <div class="illoCap">
-          <span class="lineTag" style="background:${ln.c}">${ln.n}</span>
-          <span class="cityTag">${CITY[d.city]}</span>
+
+    const go = (x.go||[]).map(g=>{
+      const gl = L[g.ln] || L.walk;
+      return `<li class="goleg">
+        <span class="goln"><i style="background:${gl.c}"></i>${gl.n}</span>
+        <span class="god">${g.d}</span>
+        <span class="got"><b>${g.t}</b>${g.p?yen(g.p)+" pp":"free"}</span>
+      </li>`;
+    }).join("");
+
+    const eat = (x.eat||[]).map(e=>`
+      <div class="eat">
+        <div class="eatTop"><span class="sname">${e.n}</span><span class="band">${e.b}</span></div>
+        <div class="where">${e.a}</div>
+        <div class="sdesc">${e.d}</div>
+        <div class="links">
+          ${e.u?`<a href="${e.u}" target="_blank" rel="noopener">Site ↗</a>`:""}
+          <a href="${map(e.q)}" target="_blank" rel="noopener">Map ↗</a>
         </div>
+      </div>`).join("");
+
+    const loadCls = (x.load||"").toLowerCase();
+    const bookChips = (x.book||[]).map(b=>`<span class="gchip book">${b}</span>`).join("");
+
+    return `<div class="tabpanel" role="tabpanel" id="panel-${d.n}" aria-labelledby="tab-${d.n}"
+        data-loc="${d.city}" tabindex="0" hidden>
+      <div class="illoHost" data-day="${d.n}">${ILLO[d.illo]}</div>
+      <div class="illoCap">
+        <span class="lineTag" style="background:${ln.c}">${ln.n}</span>
+        <span class="cityTag">${CITY[d.city]}</span>
+      </div>
+      <div class="dbody2">
+        <div class="glance">
+          ${x.date?`<span class="gchip"><b>${x.date}</b></span>`:""}
+          <span class="gchip">${d.s}</span>
+          ${x.load?`<span class="gchip load">Pace <b class="${loadCls}">${x.load}</b></span>`:""}
+          <span class="gchip">Day cost <b>${yen(dayCost(d)*2)}</b> · 2 adults</span>
+          ${bookChips}
+        </div>
+        <div class="cap" style="font-family:var(--f-data);font-size:10.5px;letter-spacing:.09em;
+          text-transform:uppercase;color:var(--tx-3);margin:12px 20px 0">${d.cap}</div>
+
+        <div class="sect">The plan</div>
+        <div style="padding:0 20px">${stops}</div>
+
+        ${go?`<div class="sect">Getting around</div><ul class="go">${go}</ul>`:""}
+
+        ${eat?`<div class="sect">Where to eat</div><div class="eatgrid">${eat}</div>`:""}
+
         <div style="padding:0 20px">
-          <div class="cap" style="font-family:var(--f-data);font-size:10.5px;letter-spacing:.09em;
-            text-transform:uppercase;color:var(--tx-3);margin:10px 0 2px">${d.cap}</div>
-          ${stops}
           <div class="tip"><b>${d.tip.h}</b>${d.tip.b}</div>
           <div class="tip baby"><b>With the baby</b>${d.baby}</div>
         </div>
       </div>
-    </details>`;
+    </div>`;
   }).join("");
+
+  rail.innerHTML = tabStrip + panels;
+
+  // ----- tab behaviour -----
+  const tabEls = Array.from(rail.querySelectorAll(".daytab"));
+  const panelEls = Array.from(rail.querySelectorAll(".tabpanel"));
+  function selectDay(n, focus){
+    tabEls.forEach(t=>{
+      const on = t.dataset.day === String(n);
+      t.setAttribute("aria-selected", String(on));
+      if (on && focus) t.focus();
+      if (on) t.scrollIntoView({block:"nearest", inline:"nearest"});
+    });
+    panelEls.forEach(p=>{
+      const on = p.id === "panel-"+n;
+      p.classList.toggle("on", on);
+      p.hidden = !on;
+    });
+  }
+  tabEls.forEach((t,i)=>{
+    t.addEventListener("click", ()=>selectDay(t.dataset.day));
+    t.addEventListener("keydown", e=>{
+      const vis = tabEls.filter(x=>!x.classList.contains("hide"));
+      const pos = vis.indexOf(t);
+      if (e.key==="ArrowRight" || e.key==="ArrowLeft"){
+        e.preventDefault();
+        const nx = vis[(pos + (e.key==="ArrowRight"?1:vis.length-1)) % vis.length];
+        selectDay(nx.dataset.day, true);
+      }
+    });
+  });
+  selectDay(1);
 
   // ---------- transfer section banner ----------
   document.getElementById("transferIllo").innerHTML =
@@ -1599,7 +1821,7 @@
   }
 
   days.forEach(d=>{
-    const card = document.querySelector('.day[data-loc] .illoHost[data-day="'+d.n+'"]');
+    const card = document.querySelector('.tabpanel .illoHost[data-day="'+d.n+'"]');
     attachPhoto(card, String(d.n), d.cap);
   });
   attachPhoto(document.getElementById("transferIlloHost"), "99",
@@ -1889,9 +2111,13 @@
     b.addEventListener("click",()=>{
       const c = b.dataset.city;
       cityBtns.forEach(x=>x.setAttribute("aria-pressed",String(x===b)));
-      document.querySelectorAll(".day").forEach(d=>{
-        d.classList.toggle("hide", c!=="all" && d.dataset.loc!==c);
-      });
+      // Filter the day tabs; if the active day is filtered out, jump to the first visible one.
+      tabEls.forEach(t=>t.classList.toggle("hide", c!=="all" && t.dataset.loc!==c));
+      const active = tabEls.find(t=>t.getAttribute("aria-selected")==="true");
+      if (!active || active.classList.contains("hide")){
+        const first = tabEls.find(t=>!t.classList.contains("hide"));
+        if (first) selectDay(first.dataset.day);
+      }
     });
   });
 
