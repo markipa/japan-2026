@@ -21,7 +21,7 @@ const title = titleMatch ? titleMatch[1].trim() : 'Japan — 10 Day Itinerary';
 const body = titleMatch ? src.slice(titleMatch[0].length) : src;
 
 const DESCRIPTION =
-  'An illustrated ten-day Tokyo and Osaka itinerary for two adults and an infant, ' +
+  'An illustrated ten-day Osaka and Tokyo itinerary for two adults and an infant, ' +
   'costed in yen across three budget tiers.';
 
 const doc = `<!doctype html>

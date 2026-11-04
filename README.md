@@ -1,10 +1,11 @@
 # Japan 2026 — ten-day itinerary
 
-A single-page, self-contained trip planner for **Tokyo and Osaka**: five nights in Tokyo, one
-bullet train, four nights working out of Osaka with Kyoto and Nara in reach.
+A single-page, self-contained trip planner for **Osaka and Tokyo**: four nights working out of
+Osaka with Kyoto and Nara in reach, one bullet train, then five nights in Tokyo ending at
+Disneyland. Arrive at Kansai (KIX), depart from Narita (NRT).
 
 Built for two adults travelling with an infant, costed in yen across three budget tiers, and
-dated to the late-autumn colour window.
+dated to the late-autumn colour window (30 Nov – 9 Dec 2026).
 
 ## What's in it
 

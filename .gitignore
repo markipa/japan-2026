@@ -6,3 +6,8 @@ Thumbs.db
 
 # Superseded Tokyo-only draft, kept locally
 tokyo-10-day.html
+
+# Visa-application itinerary and source screenshots — contain personal data
+# (applicant name, exact travel dates). Kept local; never push to this public repo.
+Itinerary/
+Itinerary 2/
