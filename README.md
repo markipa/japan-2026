@@ -9,6 +9,9 @@ dated to the late-autumn colour window (30 Nov – 9 Dec 2026).
 
 ## What's in it
 
+- **An "at a glance" sheet** — the whole trip as ten illustrated cards, each with its date, what
+  the day is, its stops and its cost. Tap one to open that day in full; hit **Print this sheet**
+  and the ten days come off a printer on a single A4 or Letter page, nothing else on it
 - **Ten day-by-day cards**, colour-coded by the rail line that gets you there — Tokyo Metro,
   Toei, JR and Osaka Metro official line colours
 - **Every stop costed** for two adults, with a note wherever the baby goes free
