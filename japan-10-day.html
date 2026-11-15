@@ -190,6 +190,91 @@
     .gomap,.gomapkey{padding-left:0;padding-right:0}
   }
 
+  /* ---------- at a glance: the printable card sheet ---------- */
+  .sheetbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 18px}
+  .btnPrint{font-family:var(--f-data);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;
+    padding:8px 14px;border:1px solid var(--line);border-radius:8px;background:var(--surface);
+    color:var(--tx-2);cursor:pointer}
+  .btnPrint:hover{background:var(--surface-2);color:var(--tx);border-color:var(--accent-ink)}
+  .glancegrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:14px}
+  .gcard{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);
+    border-radius:12px;overflow:hidden;cursor:pointer;
+    transition:box-shadow .15s,border-color .15s,transform .15s}
+  .gcard:hover{border-color:var(--accent-ink);box-shadow:0 4px 16px rgba(0,0,0,.12);transform:translateY(-2px)}
+  .gcard.hide{display:none}
+  @media (prefers-reduced-motion:reduce){.gcard,.gcard:hover{transition:none;transform:none}}
+  .gtop{position:relative}
+  .gpill{position:absolute;left:10px;top:10px;z-index:3;
+    font-family:var(--f-disp);font-weight:800;line-height:1;text-align:center;
+    padding:7px 11px 6px;border-radius:9px;box-shadow:0 2px 8px rgba(0,0,0,.28)}
+  .gpill b{display:block;font-size:14px;letter-spacing:.02em}
+  .gpill i{display:block;font-style:normal;font-family:var(--f-data);font-weight:600;
+    font-size:9px;letter-spacing:.16em;margin-top:3px;opacity:.82}
+  .gstar{position:absolute;right:10px;top:10px;z-index:3;
+    font-family:var(--f-data);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;
+    background:rgba(8,11,18,.62);color:#FFD9A0;padding:4px 8px;border-radius:99px;backdrop-filter:blur(3px)}
+  .gbody{padding:12px 14px 0;flex:1}
+  .gday{font-family:var(--f-data);font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;
+    color:var(--tx-3)}
+  .gtitle{font-family:var(--f-disp);font-weight:800;font-size:15.5px;line-height:1.25;
+    letter-spacing:-.015em;margin:5px 0 9px}
+  .glist{list-style:none;margin:0;padding:0}
+  .glist li{position:relative;padding-left:14px;font-size:14px;line-height:1.45;
+    color:var(--tx-2);margin-bottom:4px}
+  .glist li::before{content:"";position:absolute;left:2px;top:8px;width:5px;height:5px;
+    border-radius:50%;background:var(--dotc,var(--accent))}
+  .gfoot{display:flex;justify-content:space-between;align-items:center;gap:8px;
+    margin-top:12px;padding:10px 14px;border-top:1px solid var(--line);background:var(--surface-2);
+    font-family:var(--f-data);font-size:11px;color:var(--tx-2)}
+  .gfoot b{color:var(--tx);font-weight:700}
+  .gopen{font-family:var(--f-data);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;
+    border:0;background:transparent;color:var(--accent);cursor:pointer;padding:2px 0}
+  .gopen:hover{text-decoration:underline}
+
+  /* The sheet is meant to come off a printer and go in a bag, so print it on paper
+     colours whatever theme the screen is in, four across, never splitting a card. */
+  @media print{
+    :root,:root[data-theme="dark"]{
+      --bg:#FFFFFF; --surface:#FFFFFF; --surface-2:#F4F5F1; --line:#C9CCC4;
+      --tx:#111520; --tx-2:#434A58; --tx-3:#6B7280;
+      --accent:#A95600; --accent-ink:#C46A00; --accent-soft:#FDF0DC;
+      --il-sky:#E6EBEE; --il-far:#AEC0C8; --il-mid:#718B97; --il-near:#3C5260; --il-ink:#1D2A33;
+    }
+    .bar,.sheetbar,#themeToggle{display:none !important}
+    /* Chromium fragments a CSS grid by pushing each row to its own sheet, so for paper
+       the grid becomes inline-block columns, which break where they are told to. */
+    .glancegrid{display:block}
+    .gcard{display:inline-block;vertical-align:top;width:24.3%;margin:0 .9% 7px 0;
+      break-inside:avoid;page-break-inside:avoid;box-shadow:none;transform:none;border-radius:8px}
+    .gcard:nth-child(4n){margin-right:0}
+    .gcard:hover{box-shadow:none;transform:none}
+    .gpill{left:6px;top:6px;padding:5px 8px 4px;border-radius:6px;box-shadow:none}
+    .gpill b{font-size:10.5px}
+    .gpill i{font-size:7px;margin-top:2px}
+    .gstar{right:6px;top:6px;font-size:7.5px;padding:3px 6px;
+      background:rgba(8,11,18,.7);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .gbody{padding:8px 9px 0}
+    .gday{font-size:7.5px;letter-spacing:.1em}
+    .gtitle{font-size:11.5px;margin:3px 0 6px}
+    .glist li{font-size:9.5px;line-height:1.35;margin-bottom:2px;padding-left:10px}
+    .glist li::before{left:1px;top:5px;width:3.5px;height:3.5px}
+    .gfoot{font-size:8px;padding:6px 9px;margin-top:8px}
+    section{padding-top:22px}
+    body.sheet-only .wrap{padding:0}
+    body.sheet-only .wrap > section:not(#atglance),
+    body.sheet-only .wrap > footer{display:none}
+    body.sheet-only .gopen{display:none}
+    body.sheet-only header.top{padding:0 0 6px;border-bottom:0}
+    body.sheet-only .kanji{font-size:9px}
+    body.sheet-only h1{font-size:20px;line-height:1.1;margin:4px 0 0}
+    body.sheet-only .sub{display:none}
+    body.sheet-only .facts{margin-top:8px;gap:5px}
+    body.sheet-only .fact{font-size:8px;padding:3px 7px}
+    body.sheet-only #atglance{padding-top:10px}
+    body.sheet-only #atglance .eyebrow,body.sheet-only #atglance h2{display:none}
+    body.sheet-only #atglance .lede{display:none}
+  }
+
   /* ---------- maps ---------- */
   .mapCard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
     overflow:hidden;margin-bottom:14px}
@@ -367,6 +452,19 @@
     </div>
     <div class="total">Trip total, all three <b id="grand">¥—</b> <span id="grandUsd"></span></div>
   </div>
+
+  <section id="atglance">
+    <span class="eyebrow">The whole trip</span>
+    <h2>At a glance</h2>
+    <p class="lede">Ten days on one sheet — what each day is, in order, with what it costs. Tap any
+      card to open that day in full below. The city filter above narrows this too, and the sheet
+      prints on a single page.</p>
+    <div class="sheetbar">
+      <button class="btnPrint" id="printSheet" type="button">Print this sheet</button>
+      <span class="eyebrow">One page · A4 or Letter</span>
+    </div>
+    <div class="glancegrid" id="glanceGrid"></div>
+  </section>
 
   <section id="days">
     <span class="eyebrow">The route</span>
@@ -1450,6 +1548,66 @@
   });
   selectDay(1);
 
+  // ---------- at a glance: one card per day, the whole trip on a sheet ----------
+  // A second view of the same `days` and `DAILY` data the tabs above are built from —
+  // never a second copy of the itinerary, so the two can't drift.
+  const glanceGrid = document.getElementById("glanceGrid");
+
+  // Rail-line colours run from #9ACD32 to #003894, so the date pill can't assume either
+  // ink or paper. Score both against the WCAG contrast formula and take the better one —
+  // on the mid-tone greens and pinks the two are far apart and the eye picks the gap.
+  const INK = "#0E1220", PAPER = "#FFFFFF";
+  const lum = hex => {
+    const c = [1,3,5].map(i => parseInt(hex.substr(i,2),16)/255)
+      .map(v => v <= .03928 ? v/12.92 : Math.pow((v+.055)/1.055, 2.4));
+    return .2126*c[0] + .7152*c[1] + .0722*c[2];
+  };
+  const ratio = (a,b) => { const x = lum(a)+.05, y = lum(b)+.05; return x>y ? x/y : y/x; };
+  const inkOn = bg => ratio(INK,bg) >= ratio(PAPER,bg) ? INK : PAPER;
+
+  glanceGrid.innerHTML = days.map(d=>{
+    const ln = L[d.line], x = DAILY[d.n] || {};
+    const parts = (x.date || "").split(" · ");
+    const when = (parts[0] || "").toUpperCase(), dow = (parts[1] || "").toUpperCase();
+    const bullets = d.stops.map(s=>`<li>${s.n}</li>`).join("");
+    const booked = (x.book || []).length;
+    return `<article class="gcard" data-day="${d.n}" data-loc="${d.city}" style="--dotc:${ln.c}">
+      <div class="gtop illoHost" data-glance="${d.n}">
+        ${ILLO[d.illo]}
+        <div class="gpill" style="background:${ln.c};color:${inkOn(ln.c)}">
+          <b>${when}</b><i>${dow}</i></div>
+        ${booked?`<span class="gstar" title="${x.book.join(" · ")}">★ Book</span>`:""}
+      </div>
+      <div class="gbody">
+        <div class="gday">Day ${String(d.n).padStart(2,"0")} · ${CITY[d.city]}${x.load?" · "+x.load:""}</div>
+        <div class="gtitle">${d.t}</div>
+        <ul class="glist">${bullets}</ul>
+      </div>
+      <div class="gfoot">
+        <span><b>${yen(dayCost(d)*2)}</b> · 2 adults</span>
+        <button class="gopen" type="button">Open day →</button>
+      </div>
+    </article>`;
+  }).join("");
+
+  // A card is a shortcut into the tabs below, so the sheet and the detail stay one page.
+  glanceGrid.addEventListener("click", e=>{
+    const card = e.target.closest(".gcard");
+    if (!card) return;
+    selectDay(card.dataset.day);
+    const calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    document.getElementById("days").scrollIntoView({behavior: calm ? "auto" : "smooth", block:"start"});
+  });
+
+  const printBtn = document.getElementById("printSheet");
+  if (printBtn){
+    printBtn.addEventListener("click", ()=>{
+      document.body.classList.add("sheet-only");
+      window.print();
+    });
+    window.addEventListener("afterprint", ()=>document.body.classList.remove("sheet-only"));
+  }
+
   // ---------- transfer section banner ----------
   document.getElementById("transferIllo").innerHTML =
     '<div class="illoHost" id="transferIlloHost">' + ILLO.shinjuku + '</div>' +
@@ -1866,6 +2024,9 @@
   days.forEach(d=>{
     const card = document.querySelector('.tabpanel .illoHost[data-day="'+d.n+'"]');
     attachPhoto(card, String(d.n), d.cap);
+    // The glance sheet shows the same photo over the same drawing — one URL, so the
+    // second request is a cache hit, and both fall back to the drawing together.
+    attachPhoto(document.querySelector('.illoHost[data-glance="'+d.n+'"]'), String(d.n), d.cap);
   });
   attachPhoto(document.getElementById("transferIlloHost"), "99",
     "Shinjuku at night, Tokyo");
@@ -2156,6 +2317,8 @@
       cityBtns.forEach(x=>x.setAttribute("aria-pressed",String(x===b)));
       // Filter the day tabs; if the active day is filtered out, jump to the first visible one.
       tabEls.forEach(t=>t.classList.toggle("hide", c!=="all" && t.dataset.loc!==c));
+      document.querySelectorAll(".gcard").forEach(g=>
+        g.classList.toggle("hide", c!=="all" && g.dataset.loc!==c));
       const active = tabEls.find(t=>t.getAttribute("aria-selected")==="true");
       if (!active || active.classList.contains("hide")){
         const first = tabEls.find(t=>!t.classList.contains("hide"));
